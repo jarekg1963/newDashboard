@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Advantage.API.Controllers
 {
+    // jarek
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
