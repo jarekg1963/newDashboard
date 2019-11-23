@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Advantage.API.Demo.Models
+namespace Advantage.API.Models
 {
     public class Order
     {
