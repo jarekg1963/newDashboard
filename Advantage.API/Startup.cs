@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Advantage.API.Model;
 using Advantage.API.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,9 @@ namespace Advantage.API
             });
 
             services.AddDbContext<ApiContext>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
+
+                services.AddDbContext<DerogationContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
 
             services.AddTransient<DataSeed>();

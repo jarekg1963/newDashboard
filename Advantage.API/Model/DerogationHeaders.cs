@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Advantage.API.Model
 {
     public partial class DerogationHeaders
     {
+        [Key]
         public long DerogationId { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Owner { get; set; }
