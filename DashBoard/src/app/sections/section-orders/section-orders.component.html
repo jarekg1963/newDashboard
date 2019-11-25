@@ -29,13 +29,14 @@
 
 
 
-<!--
+
   <app-pagination
   (goPage)="goToPage($event)"
   (goPrev)="goToPrevious()"
-  (goNext)="goToNext()"
   [page]="page"
   [perPage]="limit"
-  [count]="total">
+  [count]="total"
+  (goNext)="goToNext()">
   </app-pagination>
-</div> -->
+</div>
+
