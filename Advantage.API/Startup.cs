@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+
 namespace Advantage.API
 {
     public class Startup
@@ -39,12 +40,15 @@ namespace Advantage.API
             services.AddDbContext<ApiContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
 
-                services.AddDbContext<DerogationContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
+            services.AddDbContext<DerogationContext>(options =>
+       options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
 
             services.AddTransient<DataSeed>();
             services.AddControllers();
+            services.AddOpenApiDocument();
+
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataSeed seed)
@@ -66,6 +70,9 @@ namespace Advantage.API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
         }
     }
 }

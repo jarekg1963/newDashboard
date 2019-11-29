@@ -1,4 +1,6 @@
+import { MyTestserviceService } from './../tools/my-testservice.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  todaydate: any;
   links =  [
     {"Name": "aaaaaaa",
     "routeValue": "bbbb"},
@@ -16,11 +19,11 @@ export class SidebarComponent implements OnInit {
     "routeValue": "fffffff"}
   ];
 
-  constructor() { }
+  constructor(private _testService:  MyTestserviceService ) { }
 
   ngOnInit() {
-
-
+    this.todaydate = this._testService.todayDate();
   }
+
 
 }

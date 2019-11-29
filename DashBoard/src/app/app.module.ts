@@ -16,6 +16,15 @@ import { ServerComponent } from './server/server.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SalesDataService } from './services/sales-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DerogationheaderComponent } from './derogation/derogationheader/derogationheader.component';
+import { AgGridModule } from '@ag-grid-community/angular';
+import { DerogationServicesService } from './services/derogation-services.service';
+import { CellCustomComponent } from './derogation/cell-custom/cell-custom.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { FormsModule } from '@angular/forms';
+import { DerogationDetailsComponent } from './derogation/derogation-details/derogation-details.component';
+import { CellbuttondetailsComponent } from './derogation/cellbuttondetails/cellbuttondetails.component';
 
 
 @NgModule({
@@ -30,15 +39,25 @@ import { HttpClientModule } from '@angular/common/http';
     LineChartComponent,
     PieChartComponent,
     ServerComponent,
-    PaginationComponent
+    PaginationComponent,
+    DerogationheaderComponent,
+    CellCustomComponent,
+    DerogationDetailsComponent,
+    CellbuttondetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule.withComponents([]),
+    BrowserAnimationsModule,
+    MaterialModule,
+ FormsModule
+
   ],
-  providers: [SalesDataService],
-  bootstrap: [AppComponent]
+  providers: [SalesDataService, DerogationServicesService],
+  bootstrap: [AppComponent],
+  entryComponents: [CellCustomComponent, DerogationDetailsComponent, CellbuttondetailsComponent]
 })
 export class AppModule { }

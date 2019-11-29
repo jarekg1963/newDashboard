@@ -1,0 +1,28 @@
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Date from " [(ngModel)] = "fromDate"       >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker startView="month" [startAt]="fromDate"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker1" placeholder="Date from " [(ngModel)] = "toDate  "       >
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1  startView="month" [startAt]="toDate"></mat-datepicker>
+</mat-form-field>
+
+
+
+<button type="button" class="btn btn-secondary btn-sm" (click)="showDerogations()" >Secondary</button>
+
+
+
+
+<ag-grid-angular
+    style="width: 1200px; height: 700px;"
+    class="ag-theme-balham"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [modules]="modules"
+    [pagination]="true"
+    >
+</ag-grid-angular>
