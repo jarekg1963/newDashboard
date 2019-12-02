@@ -45,5 +45,14 @@ getDerogationItemsByid(id: number) {
 }
 
 
+getDerogationItemId(id: number) {
+  return this._http.get('http://localhost:5000/api/DerogationItem/GetById/' + id)
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
+deleteDerodationItem(id: number) {
+  return this._http.delete('http://localhost:5000/api/DerogationItem/' + id)
+  .pipe(retry(1), catchError(this.errorHandl));
+}
 
 }

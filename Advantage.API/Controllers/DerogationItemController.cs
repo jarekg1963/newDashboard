@@ -26,10 +26,34 @@ namespace Advantage.API.Controllers
         }
 
         [HttpGet("{id}")]
+
         public IActionResult Get(int id)
         {
             var response = _ctx.DerogationHeadersItems.Where(d => d.DerogationId == id);
             return Ok(response);
+        }
+
+        [HttpGet("GetById/{id}")]
+        // [HttpGet("{id}")]
+        // [Route("GetById/{id}")]
+        public IActionResult GetById(int id)
+        {
+            var response = _ctx.DerogationHeadersItems.Where(d => d.Id == id);
+            return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var order = _ctx.DerogationHeadersItems.FirstOrDefault(t => t.Id == id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            _ctx.DerogationHeadersItems.Remove(order);
+            _ctx.SaveChanges();
+            return new NoContentResult();
         }
 
     }

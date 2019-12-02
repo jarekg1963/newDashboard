@@ -1,15 +1,78 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { EditdetailderogationComponent } from "../editdetailderogation/editdetailderogation.component";
+import { ConfirmationdialogComponent } from "src/app/tools/confirmationdialog/confirmationdialog.component";
+import { Observable } from 'rxjs';
+import { DerogationServicesService } from 'src/app/services/derogation-services.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-cellbuttondetails',
-  templateUrl: './cellbuttondetails.component.html',
-  styleUrls: ['./cellbuttondetails.component.css']
+  selector: "app-cellbuttondetails",
+  templateUrl: "./cellbuttondetails.component.html",
+  styleUrls: ["./cellbuttondetails.component.css"]
 })
 export class CellbuttondetailsComponent implements OnInit {
+  params: any;
 
-  constructor() { }
+  agInit(params) {
+    this.params = params;
+  }
+  constructor(public dialog: MatDialog, private _derogationService: DerogationServicesService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  openDialogEditDetails(): void {
+    const dialogRef = this.dialog.open(EditdetailderogationComponent, {
+      width: "1100px",
+      height: "680px",
+      data: this.params.node.data.derogationId
+    });
+  }
+
+  editDetailRow($event) {
+    const params = {
+      event: $event
+    };
+    this.openDialog2();
+  }
+
+  openDialog2() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "1100px";
+    dialogConfig.height = "680px";
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = this.params.node.data.id;
+    // dialogConfig.data = {
+    //     id: this.params.node.data.derogationId};
+
+    this.dialog.open(EditdetailderogationComponent, dialogConfig);
+  }
+
+  openDialogDelete($event): void {
+    const params = {
+      event: $event
+    };
+    const dialogRef = this.dialog.open(ConfirmationdialogComponent, {
+      width: "350px",
+      data: "Do you confirm the deletion of this data?"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("Yes clicked" + this.params.node.data.id);
+        this.deleteDerogationItem(this.params.node.data.id);
+
+      }
+    });
+  }
+
+  deleteDerogationItem (id ) {
+    return this._derogationService.deleteDerodationItem(id).subscribe(data => {
+
+    });
   }
 
 }
+

@@ -35,6 +35,7 @@ C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Micr
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Logging.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Options.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Primitives.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
@@ -45,7 +46,14 @@ C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Micr
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Namotion.Reflection.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NJsonSchema.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Annotations.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.AspNetCore.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Core.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Generation.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Generation.AspNetCore.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\SQLitePCLRaw.batteries_v2.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\SQLitePCLRaw.nativelibrary.dll
@@ -142,11 +150,3 @@ C:\programowanie\Nauka\Dashboard\Code\Advantage.API\obj\Debug\netcoreapp3.0\Adva
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\obj\Debug\netcoreapp3.0\Advantage.API.csproj.CopyComplete
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\obj\Debug\netcoreapp3.0\Advantage.API.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\obj\Debug\netcoreapp3.0\Advantage.API.pdb
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.PlatformAbstractions.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Namotion.Reflection.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NJsonSchema.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Annotations.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.AspNetCore.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Core.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Generation.dll
-C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\NSwag.Generation.AspNetCore.dll

@@ -35,8 +35,8 @@ export class CellCustomComponent implements OnInit {
 
   openDialogDetails(): void {
     const dialogRef = this.dialog.open(DerogationDetailsComponent, {
-      width: '1000px',
-      height: '650px',
+      width: '1100px',
+      height: '680px',
       data: this.params.node.data.derogationId
     });
 

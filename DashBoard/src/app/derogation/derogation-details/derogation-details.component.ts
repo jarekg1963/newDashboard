@@ -4,6 +4,7 @@ import { DerogationItem } from 'src/app/shared/DerogationItem';
 import { DerogationServicesService } from 'src/app/services/derogation-services.service';
 import { CellbuttondetailsComponent } from '../cellbuttondetails/cellbuttondetails.component';
 
+
 @Component({
   selector: 'app-derogation-details',
   templateUrl: './derogation-details.component.html',
@@ -12,11 +13,23 @@ import { CellbuttondetailsComponent } from '../cellbuttondetails/cellbuttondetai
 
 
 export class DerogationDetailsComponent implements OnInit {
-  rowData: any;
+  dData: any;
   columnDefs = [
-    { headerName: "derogationId", field: "derogationId", sortable: true, width: 250 },
-    { headerName: "modelName", field: "modelName", sortable: true, width: 250 },
-   { headerName: "partNo", field: "partNo", sortable: true, width: 250 },
+    {
+      headerName: "Actions",
+      field: "action",
+      cellRendererFramework: CellbuttondetailsComponent,
+      width: 130
+    },
+    { headerName: "derogationId", field: "derogationId", sortable: true, width: 50 },
+    { headerName: "modelName", field: "modelName", sortable: true, width: 150 },
+   { headerName: "partNo", field: "partNo", sortable: true, width: 150 },
+   { headerName: "workOrder", field: "workOrder", sortable: true, width: 100 },
+   { headerName: "partNoDesc", field: "partNoDesc", sortable: true, width: 200 },
+   { headerName: "productCode", field: "productCode", sortable: true, width: 200 },
+   { headerName: "action", field: "action", sortable: true, width: 200 },
+   { headerName: "id", field: "id", sortable: true, width: 150 },
+
 
   ];
 
@@ -30,13 +43,11 @@ export class DerogationDetailsComponent implements OnInit {
 
   ngOnInit() {
     this._derogationService.getDerogationItemsByid(this.data).subscribe(res => {
-      this.rowData = res;
-      console.log(this.rowData);
+      this.dData = res;
+      // console.log(this.dData);
     });
 
   }
-
-
 
 
   onNoClick(): void {

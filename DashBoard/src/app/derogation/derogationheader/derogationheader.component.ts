@@ -89,10 +89,9 @@ urlDaty = 'http://localhost:5000/api/DerogationHeader/GetByDate/?dateOd=';
     this._derogationheaders.getDerogationHeadersDaty(iurlDaty).subscribe(res => {
       this.rowData = res;
     });
-    console.log(iurlDaty);
+
   }
 
-  // getDerogationHeadersDaty(url: string) {
 
   showDerogations() {
 

@@ -1,0 +1,155 @@
+<mat-card-content>
+  <!-- Title of an Card -->
+  <mat-card-title>
+    Angular Material Component With Angular 5
+  </mat-card-title>
+
+  <!-- Actual content starts from here -->
+</mat-card-content>
+
+<div [formGroup]="edForm" (ngSubmit)="onFormSubmit(edForm.value)" novalidate>
+
+<mat-grid-list cols="3"  row="4" [style.background]="'white'" rowHeight = "100px" >
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>Action</mat-label>
+            <input matInput placeholder="action" required formControlName="action" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>A part no</mat-label>
+            <input matInput placeholder="part no" required formControlName="partNo" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>reason</mat-label>
+            <input matInput placeholder="reason" required formControlName="reason" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>apartNo</mat-label>
+            <input matInput placeholder="apartNo" required formControlName="apartNo" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>apartNoDesc</mat-label>
+            <input matInput placeholder="apartNoDesc" required formControlName="apartNoDesc" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>apartNoDesc</mat-label>
+            <input matInput placeholder="aquantity" required formControlName="aquantity" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>modelName</mat-label>
+            <input matInput placeholder="modelName" required formControlName="modelName" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>partNoDesc</mat-label>
+            <input matInput placeholder="partNoDesc" required formControlName="partNoDesc" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>productCode</mat-label>
+            <input matInput placeholder="productCode" required formControlName="productCode" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>quantity</mat-label>
+            <input matInput placeholder="quantity" required formControlName="quantity" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>supplier</mat-label>
+            <input matInput placeholder="supplier" required formControlName="supplier" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label>workOrder</mat-label>
+            <input matInput placeholder="workOrder" required formControlName="workOrder" class="form-control">
+        </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+    <button type="button" class="btn btn-secondary" (click)="onFormSubmit()">Close</button>
+
+    <button type="button" class="btn btn-secondary" (click)="pokaz()">Pokaz</button>
+
+    <!--
+
+    <div class="example-container">
+
+
+ <mat-grid-list cols="3"  row="4" [style.background]="'white'" rowHeight = "100px" >
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-label>Action</mat-label>
+          <input  matInput  placeholder="Action" [(ngModel)]="zmAction"  name="zmAction" >
+      </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-label>A part no</mat-label>
+          <input  matInput  placeholder="A PartNo" [(ngModel)]="zmapartNo"  name="zmapartNo"  required>
+      </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-label>Part no</mat-label>
+          <input  matInput  placeholder="Part no" [(ngModel)]="zmpartNo"  name="zmpartNo"  required>
+      </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>Tile 4 </mat-grid-tile>
+  <mat-grid-tile>Tile 5 </mat-grid-tile>
+  <mat-grid-tile>Tile 6 </mat-grid-tile>
+
+  <mat-grid-tile>Tile 7 </mat-grid-tile>
+  <mat-grid-tile>Tile 8 </mat-grid-tile>
+  <mat-grid-tile>Tile 9 </mat-grid-tile>
+
+  <mat-grid-tile>Tile 10 </mat-grid-tile>
+  <mat-grid-tile>Tile 11 </mat-grid-tile>
+  <mat-grid-tile>Tile 12 </mat-grid-tile>
+
+
+  </mat-grid-list>
+
+
+
+<button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+
+</div>
+ -->
