@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 
 using System.Linq;
-
+using System.Net;
 
 namespace Advantage.API.Controllers
 {
@@ -56,5 +56,34 @@ namespace Advantage.API.Controllers
             return new NoContentResult();
         }
 
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateItem(int id ,  [FromBody]DerogationHeadersItems di)
+        {
+            var entity = _ctx.DerogationHeadersItems.FirstOrDefault(e => e.Id == id);
+            if (entity == null)
+            {
+                return (BadRequest("Item was mot found "));
+            }
+            else
+            {
+               entity.Action = di.Action;
+                 entity.WorkOrder = di.WorkOrder;
+                 entity.ModelName = di.ModelName;
+                entity.ProductCode = di.ProductCode;
+                 entity.PartNo = di.PartNo;
+                 entity.PartNoDesc = di.PartNoDesc;
+                 entity.ApartNo = di.ApartNo;
+                 entity.ApartNoDesc = di.ApartNo;
+                 entity.Quantity = di.Quantity;
+                 entity.Aquantity = di.Aquantity;
+                 entity.Reason = di.Reason;
+                 entity.Supplier = di.Supplier;
+                _ctx.SaveChanges();              
+                return Ok(entity);
+
+            }
+
+        }
     }
 }

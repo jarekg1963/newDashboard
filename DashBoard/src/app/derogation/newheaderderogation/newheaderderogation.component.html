@@ -1,0 +1,55 @@
+<mat-card-content>
+  <!-- Title of an Card -->
+  <mat-card-title>
+    New deogation
+  </mat-card-title>
+
+  <!-- Actual content starts from here -->
+</mat-card-content>
+
+
+<form [formGroup]="newHeaderForm" autocomplete="off" (ngSubmit)="onFormSubmit(newHeaderForm.value)" novalidate>
+
+<mat-grid-list cols="3"  row="4" [style.background]="'white'" rowHeight = "130px" >
+  <mat-grid-tile>
+    <mat-form-field appearance = "standard"   style="width: 300px;" floatlabel="never">
+        <mat-label>Created date</mat-label>
+        <input matInput placeholder="created date" required [formControl]="createdDate" readonly="true">
+      </mat-form-field>
+</mat-grid-tile>
+
+
+<mat-grid-tile>
+  <mat-form-field appearance = "standard"   style="width: 300px;" floatlabel="never">
+      <mat-label>Owner</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let owner of owners" [value]="owner.nameValue">
+          {{owner.nameViewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</mat-grid-tile>
+
+
+<mat-grid-tile>
+  <mat-form-field appearance = "standard"   style="width: 300px;" floatlabel="never">
+      <mat-label>Department</mat-label>
+      <!-- <input matInput placeholder="department" required [formControl]="department" readonly="true"> -->
+
+      <mat-select [(value)]="selected">
+        <mat-option>None</mat-option>
+        <mat-option [value]="option1">Option 1</mat-option>
+        <mat-option [value]="option2">Option 2</mat-option>
+        <mat-option [value]="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+</mat-grid-tile>
+
+</mat-grid-list>
+
+
+<button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+
+
+</form>
+

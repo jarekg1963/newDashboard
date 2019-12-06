@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
+import { DerogationItem } from '../shared/DerogationItem';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DerogationServicesService {
+
 
   constructor(private _http: HttpClient) { }
 
@@ -55,4 +57,11 @@ deleteDerodationItem(id: number) {
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
+updateDerogationItem(id, item: DerogationItem): Observable<any> {
+return this._http.put('http://localhost:5000/api/DerogationItem/' + id , item, this.httpOptions)
+.pipe(retry(1), catchError(this.errorHandl));
 }
+
+}
+
+

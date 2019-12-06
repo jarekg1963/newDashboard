@@ -11,6 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -23,18 +24,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       MatCardModule,
       MatDialogModule,
       MatButtonModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+      MatInputModule,
+      MatSelectModule
    ],
    exports: [
       MatDatepickerModule,
       MatNativeDateModule,
-      MatFormFieldModule,
       MatInputModule,
       MatGridListModule,
       MatCardModule,
       MatDialogModule,
       MatButtonModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+      MatSelectModule
    ]
 })
 

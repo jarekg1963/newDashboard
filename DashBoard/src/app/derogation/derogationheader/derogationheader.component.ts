@@ -1,9 +1,9 @@
 import { Component, OnInit, LOCALE_ID, Inject } from "@angular/core";
 import { AllCommunityModules } from "@ag-grid-community/all-modules";
 import { DerogationServicesService } from "src/app/services/derogation-services.service";
-import { formatDate } from "@angular/common";
 import { CellCustomComponent } from "../cell-custom/cell-custom.component";
-import { FormControl } from "@angular/forms";
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { NewheaderderogationComponent } from '../newheaderderogation/newheaderderogation.component';
 
 @Component({
   selector: "app-derogationheader",
@@ -64,7 +64,6 @@ export class DerogationheaderComponent implements OnInit {
   dzis = new Date();
 
 toDate = new Date();
-// fromDate = new Date(this.toDate.getTime() - 7 * 86400000);
 fromDate = new Date(this.toDate.getTime() - 70 * 86400000);
 
 urlDaty = 'http://localhost:5000/api/DerogationHeader/GetByDate/?dateOd=';
@@ -73,15 +72,12 @@ urlDaty = 'http://localhost:5000/api/DerogationHeader/GetByDate/?dateOd=';
   modules = AllCommunityModules;
 
   constructor(
-    private _derogationheaders: DerogationServicesService
+    private _derogationheaders: DerogationServicesService,  public dialog: MatDialog
   ) {}
 
   ngOnInit() {
-
     this.getDerogationHeadersDaty();
   }
-
-
 
 
   getDerogationHeadersDaty(): void {
@@ -89,18 +85,6 @@ urlDaty = 'http://localhost:5000/api/DerogationHeader/GetByDate/?dateOd=';
     this._derogationheaders.getDerogationHeadersDaty(iurlDaty).subscribe(res => {
       this.rowData = res;
     });
-
-  }
-
-
-  showDerogations() {
-
-    this.getDerogationHeadersDaty();
-
-    console.log( ' from ' + this.zamienDate(this.fromDate));
-    console.log( ' to ' + this.zamienDate(this.toDate));
-
-
   }
 
   private dateToString(date: Date) {
@@ -113,27 +97,39 @@ urlDaty = 'http://localhost:5000/api/DerogationHeader/GetByDate/?dateOd=';
   }
 
   zamienDate(date: Date) {
-
     let day = date.getDate();
     let strDay: string;
     let strMonth: string;
     if (day < 10)
      { strDay = '0' + day.toString(); } else { strDay = day.toString(); }
     let monthIndex = date.getMonth() + 1;
-
     if ( monthIndex < 10)
     { strMonth = '0' + monthIndex.toString(); } else { strMonth = monthIndex.toString(); }
-
-
     const year = date.getFullYear();
-
     const myFormattedDate =
       year +
       "-" +
       strMonth +
       "-" +
       strDay
-
     return myFormattedDate;
   }
+
+  newDerogations() {
+
+
+      const dialogConfig = new MatDialogConfig();
+
+      dialogConfig.disableClose = true;
+      dialogConfig.width = "1100px";
+      dialogConfig.height = "680px";
+      dialogConfig.autoFocus = true;
+      // dane transportowane do formularza
+      dialogConfig.data = "";
+
+      this.dialog.open(NewheaderderogationComponent, dialogConfig);
+    }
+
+
+
 }

@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { EditdetailderogationComponent } from "../editdetailderogation/editdetailderogation.component";
 import { ConfirmationdialogComponent } from "src/app/tools/confirmationdialog/confirmationdialog.component";
-import { Observable } from 'rxjs';
 import { DerogationServicesService } from 'src/app/services/derogation-services.service';
-import { tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: "app-cellbuttondetails",
@@ -17,7 +17,8 @@ export class CellbuttondetailsComponent implements OnInit {
   agInit(params) {
     this.params = params;
   }
-  constructor(public dialog: MatDialog, private _derogationService: DerogationServicesService) {}
+  constructor(public dialog: MatDialog, private _derogationService: DerogationServicesService,
+              private toastr: ToastrService) {}
 
   ngOnInit() {}
 
@@ -44,8 +45,6 @@ export class CellbuttondetailsComponent implements OnInit {
     dialogConfig.height = "680px";
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.params.node.data.id;
-    // dialogConfig.data = {
-    //     id: this.params.node.data.derogationId};
 
     this.dialog.open(EditdetailderogationComponent, dialogConfig);
   }
@@ -70,7 +69,7 @@ export class CellbuttondetailsComponent implements OnInit {
 
   deleteDerogationItem (id ) {
     return this._derogationService.deleteDerodationItem(id).subscribe(data => {
-
+      this.toastr.success('Deleted ', 'OK')
     });
   }
 
