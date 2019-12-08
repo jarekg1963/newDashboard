@@ -7,9 +7,9 @@ declare interface DerogationHeaders {
     slt: number;
     dcostP: number;
     dcostF: number;
-    cancelled: string;
-    approved: string;
-    offline: string;
+    cancelled: boolean;
+    approved: boolean;
+    offline: boolean;
     cancellationReason: string;
 }
 

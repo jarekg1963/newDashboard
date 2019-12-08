@@ -40,5 +40,15 @@ namespace Advantage.API.Controllers
             return Ok(response);
 
         }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] DerogationHeaders  derogationheader)
+        {
+              var entity = _ctx.DerogationHeaders.Add(derogationheader);
+              _ctx.SaveChanges();
+            
+              var lastId = _ctx.DerogationHeaders.OrderByDescending(h => h.DerogationId).First();
+            return Ok(lastId.DerogationId);
+        }
     }
 }

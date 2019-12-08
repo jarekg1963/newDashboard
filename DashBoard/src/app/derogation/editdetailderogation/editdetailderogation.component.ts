@@ -11,7 +11,7 @@ import {
 import { ToastrService } from "ngx-toastr";
 import { DerogationItem } from "src/app/shared/DerogationItem";
 import { HttpErrorResponse } from "@angular/common/http";
-import { ConfirmationdialogComponent } from 'src/app/tools/confirmationdialog/confirmationdialog.component';
+import { ConfirmationdialogComponent } from "src/app/tools/confirmationdialog/confirmationdialog.component";
 
 @Component({
   selector: "app-editdetailderogation",
@@ -130,21 +130,17 @@ export class EditdetailderogationComponent implements OnInit {
   }
 
   onFormSubmit = edFormValue => {
-
     const dialogRef = this.dialog.open(ConfirmationdialogComponent, {
-            width: "350px",
-            data: "Do you want update data?"
-          });
+      width: "350px",
+      data: "Do you want update data?"
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-
- this.kasuj();
-
- }
-
-});
-  }
+      if (result) {
+        this.updateItem();
+      }
+    });
+  };
 
   pokaz() {
     this.submitted = true;
@@ -155,9 +151,7 @@ export class EditdetailderogationComponent implements OnInit {
     return this.action.hasError("required") ? "You must enter a value" : "";
   }
 
-
-  kasuj() {
-
+  updateItem() {
     this._derogationheaders
       .updateDerogationItem(this.idItemu, this.edForm.value)
       .subscribe(
@@ -172,6 +166,4 @@ export class EditdetailderogationComponent implements OnInit {
     this.submitted = true;
     this.dialogRef.close();
   }
-
-
 }

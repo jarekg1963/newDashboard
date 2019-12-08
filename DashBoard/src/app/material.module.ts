@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import {
    MatDatepickerModule,
@@ -12,6 +13,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+// import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
+import {MatIconModule} from '@angular/material';
+
 
 
 @NgModule({
@@ -19,14 +24,15 @@ import {MatSelectModule} from '@angular/material/select';
       MatDatepickerModule,
       MatNativeDateModule,
       MatFormFieldModule,
-      MatInputModule,
       MatGridListModule,
       MatCardModule,
       MatDialogModule,
       MatButtonModule,
       BrowserAnimationsModule,
       MatInputModule,
-      MatSelectModule
+      MatSelectModule,
+      MatCheckboxModule,
+      MatIconModule
    ],
    exports: [
       MatDatepickerModule,
@@ -37,8 +43,15 @@ import {MatSelectModule} from '@angular/material/select';
       MatDialogModule,
       MatButtonModule,
       BrowserAnimationsModule,
-      MatSelectModule
-   ]
+      MatSelectModule,
+     MatCheckboxModule,
+     MatFormFieldModule,
+     MatIconModule
+   ],
+   providers: [
+    // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'} }
+  ],
+
 })
 
 export class MaterialModule { }

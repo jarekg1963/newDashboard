@@ -1,55 +1,113 @@
-<mat-card-content>
-  <!-- Title of an Card -->
-  <mat-card-title>
-    New deogation
-  </mat-card-title>
+<mat-card class="card-header">
+ <h2 class="h2class"> New derogation </h2>
 
-  <!-- Actual content starts from here -->
-</mat-card-content>
+</mat-card>
 
 
 <form [formGroup]="newHeaderForm" autocomplete="off" (ngSubmit)="onFormSubmit(newHeaderForm.value)" novalidate>
 
-<mat-grid-list cols="3"  row="4" [style.background]="'white'" rowHeight = "130px" >
-  <mat-grid-tile>
-    <mat-form-field appearance = "standard"   style="width: 300px;" floatlabel="never">
+
+    <!-- <mat-form-field class="deragaionId" appearance="standard" style="width: 300px;" floatlabel="never">
+      <mat-label>derogationId</mat-label>
+      <input matInput placeholder="derogationId"  [formControl]="derogationId" readonly="true">
+      <mat-icon matSuffix>recent_actors</mat-icon>
+    </mat-form-field> -->
+
+
+  <mat-grid-list cols="3" row="4" [style.background]="'white'" rowHeight="130px">
+    <mat-grid-tile>
+      <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
         <mat-label>Created date</mat-label>
-        <input matInput placeholder="created date" required [formControl]="createdDate" readonly="true">
+        <input matInput placeholder="created date"  [formControl]="createdDate" readonly="true">
       </mat-form-field>
-</mat-grid-tile>
+    </mat-grid-tile>
 
 
-<mat-grid-tile>
-  <mat-form-field appearance = "standard"   style="width: 300px;" floatlabel="never">
-      <mat-label>Owner</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let owner of owners" [value]="owner.nameValue">
-          {{owner.nameViewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-</mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
+        <mat-label>Owner</mat-label>
+        <mat-select [formControl]="owner">
+          <mat-option *ngFor="let owner of owners" [value]="owner.nameValue">
+            {{owner.nameViewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
 
 
-<mat-grid-tile>
-  <mat-form-field appearance = "standard"   style="width: 300px;" floatlabel="never">
-      <mat-label>Department</mat-label>
-      <!-- <input matInput placeholder="department" required [formControl]="department" readonly="true"> -->
+    <mat-grid-tile>
+      <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
+        <mat-label>Department</mat-label>
+        <mat-select [formControl]="department">
+          <mat-option *ngFor="let dep of departments" [value]="dep.nameValue">
+            {{dep.nameViewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
 
-      <mat-select [(value)]="selected">
-        <mat-option>None</mat-option>
-        <mat-option [value]="option1">Option 1</mat-option>
-        <mat-option [value]="option2">Option 2</mat-option>
-        <mat-option [value]="option3">Option 3</mat-option>
-      </mat-select>
-    </mat-form-field>
-</mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
+        <mat-label>L time</mat-label>
+        <input matInput placeholder="L time"   type="number" [formControl]="ltime">
+      </mat-form-field>
+    </mat-grid-tile>
 
-</mat-grid-list>
+    <mat-grid-tile>
+      <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
+        <mat-label>SLT</mat-label>
+        <input matInput placeholder="SLT" type="number" [formControl]="slt">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
+        <mat-label>cancellationReason</mat-label>
+        <input matInput placeholder="cancellationReason"  [formControl]="cancellationReason">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          <section class="example-section">
+            <mat-checkbox class="cancelled" [formControl]="cancelled">canceled</mat-checkbox>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
 
 
-<button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          <section class="example-section">
+            <mat-checkbox class="approved" [formControl]="approved">approved</mat-checkbox>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
 
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          <section class="example-section">
+            <mat-checkbox class="offline" [formControl]="offline">offline</mat-checkbox>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+
+
+
+  </mat-grid-list>
+
+
+  <button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+  <button type="button" class="btn btn-secondary ml-4 "  [disabled]="!newHeaderForm.valid" (click)="addNewHeader(newHeaderForm.value)">Save</button>
+
+  <p>Form value: {{ newHeaderForm.valid  }}</p>
+    <mat-error *ngIf="owner.invalid">{{getErrorMessageOwner()}}</mat-error>
 
 </form>
-

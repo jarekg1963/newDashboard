@@ -1,59 +1,81 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-
-
+import { Component, OnInit, Inject } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material";
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators
+} from "@angular/forms";
+import { DatePipe } from "@angular/common";
+import { DerogationServicesService } from "src/app/services/derogation-services.service";
 
 export interface Owners {
   nameValue: string;
   nameViewValue: string;
 }
 
-
 @Component({
-  selector: 'app-newheaderderogation',
-  templateUrl: './newheaderderogation.component.html',
-  styleUrls: ['./newheaderderogation.component.css']
+  selector: "app-newheaderderogation",
+  templateUrl: "./newheaderderogation.component.html",
+  styleUrls: ["./newheaderderogation.component.css"]
 })
-
-
 export class NewheaderderogationComponent implements OnInit {
   newHeaderForm: FormGroup;
+
   myDate = new Date();
-  selected = 'option2';
+  selected = "option2";
 
   owners: Owners[] = [
-    {nameValue: 'Jaroslaw.Granat', nameViewValue: 'Jaroslaw.Granat'},
-    {nameValue: 'Ewa.Granat', nameViewValue: 'Ewa.Granat'},
-    {nameValue: 'Zbyszek.Granat', nameViewValue: 'Zbyszek.Granat'},
-
+    { nameValue: "Jaroslaw.Granat", nameViewValue: "Jaroslaw.Granat" },
+    { nameValue: "Ewa.Granat", nameViewValue: "Ewa.Granat" },
+    { nameValue: "Zbyszek.Granat", nameViewValue: "Zbyszek.Granat" }
   ];
 
+  departments: Owners[] = [
+    { nameValue: "SCM ", nameViewValue: "SCM Supply Chain " },
+    { nameValue: "IT", nameViewValue: "IT" },
+    { nameValue: "R&D", nameViewValue: "R&D" }
+  ];
 
-  constructor( private dialog: MatDialog, private formBuilder: FormBuilder,
-               private dialogRef: MatDialogRef<NewheaderderogationComponent>,
-               private datePipe: DatePipe
-    ) {
-
-     }
+  constructor(
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<NewheaderderogationComponent>,
+    private datePipe: DatePipe,
+    private _derogationheaders: DerogationServicesService
+  ) {}
 
   ngOnInit() {
-
-
     this.newHeaderForm = new FormGroup({
-      createdDate: new FormControl("",),
-      owner: new FormControl("",),
-      department: new FormControl("",)
-
-
-
+      createdDate: new FormControl(""),
+      owner: new FormControl("", Validators.required),
+      department: new FormControl("", Validators.required),
+      ltime: new FormControl(0),
+      slt: new FormControl(0),
+      dcostP: new FormControl(0),
+      dcostF: new FormControl(0),
+      cancelled: new FormControl(""),
+      approved: new FormControl(""),
+      offline: new FormControl(""),
+      cancellationReason: new FormControl(""),
+   //   derogationId: new FormControl("")
     });
 
+    let currentDate = new Date();
+
     this.newHeaderForm.patchValue({
-    createdDate: this.datePipe.transform(new Date(),"dd-MM-yyyy"),
-    owner: "",
-    department:""
+      createdDate: currentDate,
+      owner: "",
+      department: "",
+      ltime: 0,
+      slt: 0,
+      dcostP: 0,
+      dcostF: 0,
+      cancelled: false,
+      approved: false,
+      offline: false,
+      cancellationReason: "",
+     // derogationId: 1700
     });
   }
 
@@ -69,13 +91,74 @@ export class NewheaderderogationComponent implements OnInit {
     return this.newHeaderForm.get("department");
   }
 
+  get ltime() {
+    return this.newHeaderForm.get("ltime");
+  }
+
+  get slt() {
+    return this.newHeaderForm.get("slt");
+  }
+
+  get dcostP() {
+    return this.newHeaderForm.get("dcostP");
+  }
+
+  get dcostF() {
+    return this.newHeaderForm.get("dcostF");
+  }
+
+  get cancelled() {
+    return this.newHeaderForm.get("cancelled");
+  }
+
+  get approved() {
+    return this.newHeaderForm.get("approved");
+  }
+
+  get offline() {
+    return this.newHeaderForm.get("offline");
+  }
+
+  get cancellationReason() {
+    return this.newHeaderForm.get("cancellationReason");
+  }
+
+  // get derogationId() {
+  //   return this.newHeaderForm.get("derogationId");
+  // }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  onFormSubmit(newHeaderForm) {
+  onFormSubmit() {}
+
+  addNewHeader() {
+
+
+    console.log( this.newHeaderForm.value);
+
+    this.addHeader();
+
 
   }
 
+  getErrorMessageOwner() {
+    return this.owner.hasError("required") ? "You must enter a value" : "";
+  }
+
+  addHeader() {
+    this._derogationheaders
+      .addDerogationHeader(this.newHeaderForm.value)
+      .subscribe(
+        data => {
+          console.log("zwrot z bacendu" + data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+
+    this.dialogRef.close();
+  }
 }

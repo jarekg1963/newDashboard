@@ -36,14 +36,13 @@ export class DerogationServicesService {
 }
 
 getDerogationHeadersDaty(url: string) {
-  return this._http.get(url )
+  return this._http.get(url)
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
 getDerogationItemsByid(id: number) {
   return this._http.get('http://localhost:5000/api/DerogationItem/' + id )
   .pipe(retry(1), catchError(this.errorHandl));
-
 }
 
 
@@ -62,6 +61,10 @@ return this._http.put('http://localhost:5000/api/DerogationItem/' + id , item, t
 .pipe(retry(1), catchError(this.errorHandl));
 }
 
+addDerogationHeader(hd: DerogationHeaders): Observable<any>{
+  return this._http.post('http://localhost:5000/api/DerogationHeader', hd)
+  .pipe(retry(1), catchError(this.errorHandl));
+}
 }
 
 
