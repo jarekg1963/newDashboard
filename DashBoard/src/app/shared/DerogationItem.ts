@@ -2,13 +2,13 @@ export class DerogationItem  {
 
   public DerogationID: number;
 
-  public WorkOrder: Date;
+  public WorkOrder: string;
 
   public ModelName: string;
 
   public ProductCode: string;
 
-  public PartNo: Date;
+  public PartNo: string;
 
   public PartNoDesc: string;
 
@@ -19,7 +19,8 @@ export class DerogationItem  {
   public Quantity: number;
 
   public AQuantity: number;
-  public Reason: Date;
+
+  public Reason: string;
 
   public Action: string;
 

@@ -85,5 +85,14 @@ namespace Advantage.API.Controllers
             }
 
         }
+
+         [HttpPost]
+           public IActionResult Post([FromBody]DerogationHeadersItems di)
+        {
+            var response = _ctx.DerogationHeadersItems.Add(di);
+            _ctx.SaveChanges();
+
+            return Ok();
+        }
     }
 }

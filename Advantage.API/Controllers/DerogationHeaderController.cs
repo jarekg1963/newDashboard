@@ -42,13 +42,33 @@ namespace Advantage.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] DerogationHeaders  derogationheader)
+        public IActionResult Post([FromBody] DerogationHeaders derogationheader)
         {
-              var entity = _ctx.DerogationHeaders.Add(derogationheader);
-              _ctx.SaveChanges();
-            
-              var lastId = _ctx.DerogationHeaders.OrderByDescending(h => h.DerogationId).First();
+            var entity = _ctx.DerogationHeaders.Add(derogationheader);
+            _ctx.SaveChanges();
+
+            var lastId = _ctx.DerogationHeaders.OrderByDescending(h => h.DerogationId).First();
             return Ok(lastId.DerogationId);
+        }
+
+        [HttpDelete("{id}")]
+
+        public IActionResult Delete(int id)
+        {
+
+            var entityItem = _ctx.DerogationHeadersItems.FirstOrDefault(i => i.DerogationId == id );
+            if (entityItem != null) return StatusCode(500, "Derogation has items , first delete items");
+            
+            var entity = _ctx.DerogationHeaders.SingleOrDefault(h => h.DerogationId == id);
+            if (entity == null) return NotFound("zły numer ID");
+
+            _ctx.DerogationHeaders.Remove(entity);
+            _ctx.SaveChanges();
+
+
+            return Ok();
+
+
         }
     }
 }

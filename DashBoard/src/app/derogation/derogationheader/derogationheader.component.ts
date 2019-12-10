@@ -16,7 +16,7 @@ export class DerogationheaderComponent implements OnInit {
       headerName: "Actions",
       field: "action",
       cellRendererFramework: CellCustomComponent,
-      width: 130
+      width: 180
     },
     {
       headerName: "derogationId",
@@ -45,7 +45,7 @@ export class DerogationheaderComponent implements OnInit {
       filter: true,
       width: 150
     },
-    { headerName: "cancelled", field: "cancelled", sortable: true, width: 50 },
+    { headerName: "cancelled", field: "cancelled", sortable: true, width: 50   },
     { headerName: "approved", field: "approved", sortable: true, width: 50 },
     { headerName: "offline", field: "offline", sortable: true, width: 50 },
     {
@@ -56,6 +56,9 @@ export class DerogationheaderComponent implements OnInit {
       width: 200
     }
   ];
+
+
+
 
   dataDerogationHeaders: any;
   rowData: any;
@@ -130,6 +133,9 @@ urlDaty = 'http://localhost:5000/api/DerogationHeader/GetByDate/?dateOd=';
       this.dialog.open(NewheaderderogationComponent, dialogConfig);
     }
 
+showDerogations() {
+this.getDerogationHeadersDaty();
+}
 
 
 }

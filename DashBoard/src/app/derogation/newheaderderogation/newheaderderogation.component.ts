@@ -8,6 +8,8 @@ import {
 } from "@angular/forms";
 import { DatePipe } from "@angular/common";
 import { DerogationServicesService } from "src/app/services/derogation-services.service";
+import { ConfirmationdialogComponent } from "src/app/tools/confirmationdialog/confirmationdialog.component";
+import { ToastrService } from 'ngx-toastr';
 
 export interface Owners {
   nameValue: string;
@@ -42,12 +44,17 @@ export class NewheaderderogationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<NewheaderderogationComponent>,
     private datePipe: DatePipe,
-    private _derogationheaders: DerogationServicesService
+    private _derogationheaders: DerogationServicesService,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit() {
+    let ddMMyyyy = this.datePipe.transform(new Date(), "yyyy-MM-dd");
+
+    // let currentDate = new Date();
+
     this.newHeaderForm = new FormGroup({
-      createdDate: new FormControl(""),
+      createdDate: new FormControl(ddMMyyyy),
       owner: new FormControl("", Validators.required),
       department: new FormControl("", Validators.required),
       ltime: new FormControl(0),
@@ -57,14 +64,12 @@ export class NewheaderderogationComponent implements OnInit {
       cancelled: new FormControl(""),
       approved: new FormControl(""),
       offline: new FormControl(""),
-      cancellationReason: new FormControl(""),
-   //   derogationId: new FormControl("")
+      cancellationReason: new FormControl("")
+      //   derogationId: new FormControl("")
     });
 
-    let currentDate = new Date();
-
     this.newHeaderForm.patchValue({
-      createdDate: currentDate,
+      createdDate: ddMMyyyy,
       owner: "",
       department: "",
       ltime: 0,
@@ -74,8 +79,8 @@ export class NewheaderderogationComponent implements OnInit {
       cancelled: false,
       approved: false,
       offline: false,
-      cancellationReason: "",
-     // derogationId: 1700
+      cancellationReason: ""
+      // derogationId: 1700
     });
   }
 
@@ -134,13 +139,18 @@ export class NewheaderderogationComponent implements OnInit {
   onFormSubmit() {}
 
   addNewHeader() {
+    // console.log( this.newHeaderForm.value);
+    const dialogRef = this.dialog.open(ConfirmationdialogComponent, {
+      width: "350px",
+      data: "Do you want add new derogation?"
+    });
 
-
-    console.log( this.newHeaderForm.value);
-
-    this.addHeader();
-
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // wywołanie na tak
+        this.addHeader();
+      }
+    });
   }
 
   getErrorMessageOwner() {
@@ -153,6 +163,7 @@ export class NewheaderderogationComponent implements OnInit {
       .subscribe(
         data => {
           console.log("zwrot z bacendu" + data);
+          this.toastr.success("Zapisano Derogacje numer ", data);
         },
         err => {
           console.log(err);

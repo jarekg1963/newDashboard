@@ -32,6 +32,7 @@ import { NewheaderderogationComponent } from './derogation/newheaderderogation/n
 import { DatePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AddnewderogationitemComponent } from './derogation/addnewderogationitem/addnewderogationitem.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     EditdetailderogationComponent,
     ConfirmationdialogComponent,
     NewheaderderogationComponent,
+    AddnewderogationitemComponent,
 
   ],
   imports: [
@@ -76,7 +78,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     CellbuttondetailsComponent,
     EditdetailderogationComponent,
     ConfirmationdialogComponent,
-    NewheaderderogationComponent
+    NewheaderderogationComponent,
+    AddnewderogationitemComponent
   ]
 })
 export class AppModule {}

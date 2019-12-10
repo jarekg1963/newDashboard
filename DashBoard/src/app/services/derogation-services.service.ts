@@ -65,6 +65,18 @@ addDerogationHeader(hd: DerogationHeaders): Observable<any>{
   return this._http.post('http://localhost:5000/api/DerogationHeader', hd)
   .pipe(retry(1), catchError(this.errorHandl));
 }
+
+deleteDerogationHeader(id: number){
+  return this._http.delete('http://localhost:5000/api/DerogationHeader/' + id)
+  .pipe(retry(1), catchError(this.errorHandl));
+
+}
+
+addDerogationItem(hd: DerogationHeaders): Observable<any>{
+  return this._http.post('http://localhost:5000/api/DerogationItem', hd)
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
 }
 
 

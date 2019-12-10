@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Advantage.API.Model
 {
     public partial class DerogationHeadersItems
     {
+        [Key]
+        public long Id { get; set; }
         public long? DerogationId { get; set; }
         public string WorkOrder { get; set; }
         public string ModelName { get; set; }
@@ -18,6 +21,6 @@ namespace Advantage.API.Model
         public string Reason { get; set; }
         public string Action { get; set; }
         public string Supplier { get; set; }
-        public decimal Id { get; set; }
+      
     }
 }

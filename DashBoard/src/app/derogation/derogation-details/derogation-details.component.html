@@ -6,9 +6,10 @@
 </div>
 
 
+<button type="button" class="btn btn-success" (click)="onaddNewClick()">Add new item</button>
 
 <ag-grid-angular
-style="width: 900px; height: 550px;"
+style="width: 1000px; height: 550px;"
 class="ag-theme-balham"
 [rowData]="dData"
 [columnDefs]="columnDefs"
@@ -20,4 +21,6 @@ class="ag-theme-balham"
 
 
 <button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+
+<button type="button" class="btn btn-secondary" (click)="onRefreshData()">Refresh</button>
 

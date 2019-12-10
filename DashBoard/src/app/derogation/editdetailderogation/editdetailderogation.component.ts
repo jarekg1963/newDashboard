@@ -40,11 +40,11 @@ export class EditdetailderogationComponent implements OnInit {
       reason: new FormControl("", Validators.required),
       apartNo: new FormControl(""),
       apartNoDesc: new FormControl(""),
-      aquantity: new FormControl("", Validators.required),
+      aquantity: new FormControl(0, Validators.required),
       modelName: new FormControl("", Validators.required),
       partNoDesc: new FormControl("", Validators.required),
       productCode: new FormControl("", Validators.required),
-      quantity: new FormControl("", Validators.required),
+      quantity: new FormControl(0, Validators.required),
       supplier: new FormControl(""),
       workOrder: new FormControl("", Validators.required),
       id: new FormControl(""),
@@ -137,10 +137,11 @@ export class EditdetailderogationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        // wywołanie na tak
         this.updateItem();
       }
     });
-  };
+  }
 
   pokaz() {
     this.submitted = true;
@@ -157,7 +158,7 @@ export class EditdetailderogationComponent implements OnInit {
       .subscribe(
         data => {
           // console.log("OK");
-          this.toastr.success("OK", "Opdated");
+          this.toastr.success("OK", "Updated");
         },
         err => {
           console.log(err);

@@ -16,21 +16,11 @@ namespace Advantage.API.Model
         }
 
  
-        // public virtual DbSet<Departments> Departments { get; set; }
-        // public virtual DbSet<DerogationDepartments> DerogationDepartments { get; set; }
-        // public virtual DbSet<DerogationDocs> DerogationDocs { get; set; }
+     
         public virtual DbSet<DerogationHeaders> DerogationHeaders { get; set; }
       
         public virtual DbSet<DerogationHeadersItems> DerogationHeadersItems { get; set; }
-        // public virtual DbSet<DerogationOperators> DerogationOperators { get; set; }
-  
-        // public virtual DbSet<PnPrices> PnPrices { get; set; }
-        // public virtual DbSet<PnPricesLog> PnPricesLog { get; set; }
-        // public virtual DbSet<PriceUploadLog> PriceUploadLog { get; set; }
-
-  
-        // public virtual DbSet<Users> Users { get; set; }
-
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

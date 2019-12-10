@@ -2,9 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { EditdetailderogationComponent } from "../editdetailderogation/editdetailderogation.component";
 import { ConfirmationdialogComponent } from "src/app/tools/confirmationdialog/confirmationdialog.component";
-import { DerogationServicesService } from 'src/app/services/derogation-services.service';
-import { ToastrService } from 'ngx-toastr';
-
+import { DerogationServicesService } from "src/app/services/derogation-services.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-cellbuttondetails",
@@ -17,8 +16,11 @@ export class CellbuttondetailsComponent implements OnInit {
   agInit(params) {
     this.params = params;
   }
-  constructor(public dialog: MatDialog, private _derogationService: DerogationServicesService,
-              private toastr: ToastrService) {}
+  constructor(
+    public dialog: MatDialog,
+    private _derogationService: DerogationServicesService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {}
 
@@ -30,14 +32,14 @@ export class CellbuttondetailsComponent implements OnInit {
     });
   }
 
-  editDetailRow($event) {
-    const params = {
-      event: $event
-    };
-    this.openDialog2();
-  }
+  // editDetailRow($event) {
+  //   const params = {
+  //     event: $event
+  //   };
+  //   this.openDialog2();
+  // }
 
-  openDialog2() {
+  editDetailRow() {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -63,15 +65,15 @@ export class CellbuttondetailsComponent implements OnInit {
         console.log("Yes clicked" + this.params.node.data.id);
         this.deleteDerogationItem(this.params.node.data.id);
 
+
+      } else {
       }
     });
   }
 
-  deleteDerogationItem (id ) {
+  deleteDerogationItem(id) {
     return this._derogationService.deleteDerodationItem(id).subscribe(data => {
-      this.toastr.success('Deleted ', 'OK')
+      this.toastr.success("Deleted ", "OK");
     });
   }
-
 }
-
