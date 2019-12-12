@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from '@angular/material';
-import { DerogationItem } from 'src/app/shared/DerogationItem';
 import { DerogationServicesService } from 'src/app/services/derogation-services.service';
 import { CellbuttondetailsComponent } from '../cellbuttondetails/cellbuttondetails.component';
 import { AddnewderogationitemComponent } from '../addnewderogationitem/addnewderogationitem.component';
@@ -33,6 +32,8 @@ export class DerogationDetailsComponent implements OnInit {
    { headerName: "partNoDesc", field: "partNoDesc", sortable: true, width: 200 },
    { headerName: "productCode", field: "productCode", sortable: true, width: 200 },
    { headerName: "action", field: "action", sortable: true, width: 200 },
+   { headerName: "supplier", field: "supplier", sortable: true, width: 200 },
+
    { headerName: "id", field: "id", sortable: true, width: 150 },
 
 
@@ -64,7 +65,7 @@ export class DerogationDetailsComponent implements OnInit {
     dialogConfig.height = "680px";
     dialogConfig.autoFocus = true;
     // dane transportowane do formularza
-    dialogConfig.data = this.deogationId;
+    dialogConfig.data = this.data;
 
     this.dialog.open(AddnewderogationitemComponent, dialogConfig);
     this.onRefreshData();
@@ -73,7 +74,7 @@ export class DerogationDetailsComponent implements OnInit {
   onRefreshData() {
     this._derogationService.getDerogationItemsByid(this.data).subscribe(res => {
       this.dData = res;
-      this.deogationId = this.dData[0].derogationId;
+      this.deogationId = this.data;
     });
   }
 

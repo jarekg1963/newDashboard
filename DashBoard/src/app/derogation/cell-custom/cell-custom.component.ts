@@ -38,10 +38,14 @@ export class CellCustomComponent implements OnInit {
   }
 
   openDialogDetails(): void {
+
+    console.log("id derogacji z klwisza " + this.params.node.data.derogationId);
+
     const dialogRef = this.dialog.open(DerogationDetailsComponent, {
       width: '1100px',
       height: '680px',
       data: this.params.node.data.derogationId
+
     });
 
 

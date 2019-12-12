@@ -31,8 +31,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { NewheaderderogationComponent } from './derogation/newheaderderogation/newheaderderogation.component'
 import { DatePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AddnewderogationitemComponent } from './derogation/addnewderogationitem/addnewderogationitem.component';
+import { Testservisucom1Component } from './tools/testservisucom1/testservisucom1.component';
+import { Testservisucom2Component } from './tools/testservisucom2/testservisucom2.component';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { AddnewderogationitemComponent } from './derogation/addnewderogationitem
     ConfirmationdialogComponent,
     NewheaderderogationComponent,
     AddnewderogationitemComponent,
+    Testservisucom1Component,
+    Testservisucom2Component
 
   ],
   imports: [
@@ -79,7 +83,8 @@ import { AddnewderogationitemComponent } from './derogation/addnewderogationitem
     EditdetailderogationComponent,
     ConfirmationdialogComponent,
     NewheaderderogationComponent,
-    AddnewderogationitemComponent
+    AddnewderogationitemComponent,
+
   ]
 })
 export class AppModule {}
