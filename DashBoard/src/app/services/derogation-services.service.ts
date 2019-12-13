@@ -77,6 +77,10 @@ addDerogationItem(hd: DerogationHeaders): Observable<any>{
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
+getDepartments() {
+  return this._http.get('http://localhost:5000/api/DerogationDepartments')
+  .pipe(retry(1), catchError(this.errorHandl));
 }
 
+}
 

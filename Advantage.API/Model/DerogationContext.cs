@@ -20,6 +20,8 @@ namespace Advantage.API.Model
         public virtual DbSet<DerogationHeaders> DerogationHeaders { get; set; }
       
         public virtual DbSet<DerogationHeadersItems> DerogationHeadersItems { get; set; }
+
+        public virtual DbSet<Departments> Departments { get; set; }
         
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, AbstractType } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material";
 import {
   FormGroup,
@@ -33,11 +33,14 @@ export class NewheaderderogationComponent implements OnInit {
     { nameValue: "Zbyszek.Granat", nameViewValue: "Zbyszek.Granat" }
   ];
 
-  departments: Owners[] = [
-    { nameValue: "SCM ", nameViewValue: "SCM Supply Chain " },
-    { nameValue: "IT", nameViewValue: "IT" },
-    { nameValue: "R&D", nameViewValue: "R&D" }
-  ];
+sdepartments: any;
+syfy: any;
+
+  // departments: Owners[] = [
+  //   { nameValue: "SCM ", nameViewValue: "SCM Supply Chain " },
+  //   { nameValue: "IT", nameViewValue: "IT" },
+  //   { nameValue: "R&D", nameViewValue: "R&D" }
+  // ];
 
   constructor(
     private dialog: MatDialog,
@@ -82,6 +85,8 @@ export class NewheaderderogationComponent implements OnInit {
       cancellationReason: ""
       // derogationId: 1700
     });
+
+    this.getSlownikDepartment();
   }
 
   get createdDate() {
@@ -132,9 +137,7 @@ export class NewheaderderogationComponent implements OnInit {
   //   return this.newHeaderForm.get("derogationId");
   // }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+
 
   onFormSubmit() {}
 
@@ -172,4 +175,21 @@ export class NewheaderderogationComponent implements OnInit {
 
     this.dialogRef.close();
   }
+
+  getSlownikDepartment() {
+    this._derogationheaders.getDepartments().subscribe( res =>
+      {this.sdepartments = res;
+       console.log(this.sdepartments);
+      });
 }
+
+
+
+onNoClick(): void {
+
+ this.dialogRef.close();
+}
+
+
+}
+

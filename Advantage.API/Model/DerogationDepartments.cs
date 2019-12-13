@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Advantage.API.Model
 {
@@ -17,5 +18,7 @@ namespace Advantage.API.Model
         public string DerogationUser { get; set; }
         public DateTime? OperationDate { get; set; }
         public string Checked { get; set; }
+        [Key]
+        public int id { get; set; }
     }
 }

@@ -7,10 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 export class GlobalmessangerService {
 
   private messageSource = new BehaviorSubject<string>( 'poczatkowa ');
-  private messageSource1 = new BehaviorSubject<number>( 0);
   public currentMessage = this.messageSource.asObservable();
 
+  private messageSource1 = new BehaviorSubject<number>( 0);
   public currentMessage1 = this.messageSource1.asObservable();
+
   constructor() { }
 
   changeMessage(message: string) {
