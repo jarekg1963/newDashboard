@@ -7,6 +7,9 @@ C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Adva
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Advantage.API.runtimeconfig.dev.json
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Advantage.API.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Advantage.API.pdb
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.CodeAnalysis.dll
@@ -38,6 +41,11 @@ C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Micr
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Primitives.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -65,6 +73,7 @@ C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\Syst
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\System.Composition.Runtime.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\System.Composition.TypedParts.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\System.Configuration.ConfigurationManager.dll
+C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\System.Runtime.Caching.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\System.Security.Cryptography.ProtectedData.dll
 C:\programowanie\Nauka\Dashboard\Code\Advantage.API\bin\Debug\netcoreapp3.0\cs\Microsoft.CodeAnalysis.resources.dll

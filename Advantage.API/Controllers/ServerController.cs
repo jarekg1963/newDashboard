@@ -1,4 +1,5 @@
 ﻿using Advantage.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -15,7 +16,8 @@ namespace Advantage.API.Demo.Controllers
         }
 
         // GET api/server
-        [HttpGet]
+        //  [HttpGet]
+         [HttpGet,Authorize]
         public IActionResult Get()
         {
             var response = _ctx.Servers.OrderBy(s=>s.Id).ToList(); 

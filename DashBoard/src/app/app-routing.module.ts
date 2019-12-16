@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { SectionSalesComponent } from './sections/section-sales/section-sales.component';
 import { SectionOrdersComponent } from './sections/section-orders/section-orders.component';
 import { SectionHealthComponent } from './sections/section-health/section-health.component';
+import { AuthGuardService } from '../app/services/auth-guard.service';
 
 
 const routes: Routes = [
   { path: 'sales', component: SectionSalesComponent },
-  { path: 'orders', component: SectionOrdersComponent },
+  { path: 'orders', component: SectionOrdersComponent ,  canActivate: [AuthGuardService] },
   { path: 'health', component: SectionHealthComponent },
   { path: 'derogationHeader', component: DerogationheaderComponent},
 

@@ -34,6 +34,12 @@ import { MatFormFieldModule } from '@angular/material';
 import { AddnewderogationitemComponent } from './derogation/addnewderogationitem/addnewderogationitem.component';
 import { Testservisucom1Component } from './tools/testservisucom1/testservisucom1.component';
 import { Testservisucom2Component } from './tools/testservisucom2/testservisucom2.component';
+import { LoginComponent } from './login/login.component';
+import { JwtModule } from "@auth0/angular-jwt";
+
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}
 
 
 @NgModule({
@@ -58,7 +64,8 @@ import { Testservisucom2Component } from './tools/testservisucom2/testservisucom
     NewheaderderogationComponent,
     AddnewderogationitemComponent,
     Testservisucom1Component,
-    Testservisucom2Component
+    Testservisucom2Component,
+    LoginComponent
 
   ],
   imports: [
@@ -72,7 +79,14 @@ import { Testservisucom2Component } from './tools/testservisucom2/testservisucom
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5000"],
+        blacklistedRoutes: []
+      }
+    })
   ],
   providers: [SalesDataService, DerogationServicesService,DatePipe],
   bootstrap: [AppComponent],
@@ -84,6 +98,7 @@ import { Testservisucom2Component } from './tools/testservisucom2/testservisucom
     ConfirmationdialogComponent,
     NewheaderderogationComponent,
     AddnewderogationitemComponent,
+    LoginComponent
 
   ]
 })

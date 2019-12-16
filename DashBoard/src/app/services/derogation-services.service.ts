@@ -82,5 +82,10 @@ getDepartments() {
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
+getLudzie() {
+  return this._http.get('http://localhost:5000/api/DerogationUsers')
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
 }
 

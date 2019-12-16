@@ -1,0 +1,36 @@
+
+<form [formGroup]="ngForm" autocomplete="off" (ngSubmit)="onLoginClick(ngForm.value)" novalidate>
+
+
+  <mat-grid-list cols="1" row="4" [style.background]="'white'" rowHeight="130px">
+
+
+  <mat-grid-tile>
+    <mat-form-field appearance="standard" style="width: 400px;" floatlabel="never">
+      <mat-label>username</mat-label>
+      <input matInput placeholder="username" required [formControl]="username">
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field appearance="standard" style="width: 400px;" floatlabel="never">
+      <mat-label>password</mat-label>
+      <input matInput placeholder="action" required [formControl]="password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  </mat-grid-list>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+    <button class="btn btn-lg btn-primary btn-block" (click)="onNoClick()">Close</button>
+
+</form>
+
+
+
+

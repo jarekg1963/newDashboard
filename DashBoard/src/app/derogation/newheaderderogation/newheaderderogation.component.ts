@@ -9,7 +9,7 @@ import {
 import { DatePipe } from "@angular/common";
 import { DerogationServicesService } from "src/app/services/derogation-services.service";
 import { ConfirmationdialogComponent } from "src/app/tools/confirmationdialog/confirmationdialog.component";
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from "ngx-toastr";
 
 export interface Owners {
   nameValue: string;
@@ -33,8 +33,9 @@ export class NewheaderderogationComponent implements OnInit {
     { nameValue: "Zbyszek.Granat", nameViewValue: "Zbyszek.Granat" }
   ];
 
-sdepartments: any;
-syfy: any;
+  sdepartments = [];
+  ludzie = [];
+  syfy: any;
 
   // departments: Owners[] = [
   //   { nameValue: "SCM ", nameViewValue: "SCM Supply Chain " },
@@ -48,7 +49,7 @@ syfy: any;
     private dialogRef: MatDialogRef<NewheaderderogationComponent>,
     private datePipe: DatePipe,
     private _derogationheaders: DerogationServicesService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -87,6 +88,7 @@ syfy: any;
     });
 
     this.getSlownikDepartment();
+    this.getSlownikLudzie();
   }
 
   get createdDate() {
@@ -137,8 +139,6 @@ syfy: any;
   //   return this.newHeaderForm.get("derogationId");
   // }
 
-
-
   onFormSubmit() {}
 
   addNewHeader() {
@@ -177,19 +177,20 @@ syfy: any;
   }
 
   getSlownikDepartment() {
-    this._derogationheaders.getDepartments().subscribe( res =>
-      {this.sdepartments = res;
-       console.log(this.sdepartments);
-      });
+    this._derogationheaders.getDepartments().subscribe((res: any[]) => {
+      this.sdepartments = res;
+      //      console.log(this.sdepartments);
+    });
+  }
+
+  getSlownikLudzie() {
+    this._derogationheaders.getLudzie().subscribe((res: any[]) => {
+      this.ludzie = res;
+      console.log(this.ludzie);
+    });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
-
-
-
-onNoClick(): void {
-
- this.dialogRef.close();
-}
-
-
-}
-

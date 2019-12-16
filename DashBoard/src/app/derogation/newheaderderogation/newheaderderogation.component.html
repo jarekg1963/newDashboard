@@ -27,8 +27,8 @@
       <mat-form-field appearance="standard" style="width: 300px;" floatlabel="never">
         <mat-label>Owner</mat-label>
         <mat-select [formControl]="owner">
-          <mat-option *ngFor="let owner of owners" [value]="owner.nameValue">
-            {{owner.nameViewValue}}
+          <mat-option *ngFor="let owner of ludzie" [value]="owner.derogationUser">
+            {{owner.derogationUser}}
           </mat-option>
         </mat-select>
       </mat-form-field>

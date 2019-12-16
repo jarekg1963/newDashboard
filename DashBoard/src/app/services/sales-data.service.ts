@@ -29,6 +29,14 @@ export class SalesDataService {
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
+  getServers() {
+    return this._http.get('http://localhost:5000/api/server')
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
+
+
+
+
  // Error handling
 
  errorHandl(error) {
