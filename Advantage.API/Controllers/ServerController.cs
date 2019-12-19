@@ -50,7 +50,6 @@ namespace Advantage.API.Demo.Controllers
         [HttpPut("{id}")]
         public IActionResult Message(int id, [FromBody] ServerMessage msg)
         {
-
             var server = _ctx.Servers.FirstOrDefault(s => s.Id == id);
 
             if (server == null)

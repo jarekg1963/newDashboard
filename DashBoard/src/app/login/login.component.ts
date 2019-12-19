@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { AuthGuardService } from "../services/auth-guard.service";
 import { Router } from "@angular/router";
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: "app-login",
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   ngForm: FormGroup;
   invalidLogin: any;
   hide = true;
+  zbiorProbny: any;
 
   constructor(
     private http: HttpClient,
@@ -58,18 +60,8 @@ export class LoginComponent implements OnInit {
 
 
   sLoginClick() {
-    // this.auth.loginService(this.ngForm.value).subscribe(
-    //   next => {
-    //     this.toastr.success("Zalogowano pomyślnie użytkownika : " + next.username);
-    //   },
-    //   error => {
-    //     this.toastr.error("Wrong pass or username   ");
-    //   }
-    // );
 
-    console.log('password ' + this.Password.value);
-    // console.log('User ' + this.ngForm.value);
-    this.auth.loginekService(this.ngForm.value, this.Password.value,).subscribe(
+    this.auth.loginekService(this.ngForm.value).subscribe(
       next => {
         this.toastr.success("Zalogowano pomyślnie użytkownika : " + next.FullName);
       },

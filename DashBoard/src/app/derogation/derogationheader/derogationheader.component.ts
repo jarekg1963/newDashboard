@@ -16,7 +16,7 @@ export class DerogationheaderComponent implements OnInit {
       headerName: "Actions",
       field: "action",
       cellRendererFramework: CellCustomComponent,
-      width: 180
+      width: 200
     },
     {
       headerName: "derogationId",

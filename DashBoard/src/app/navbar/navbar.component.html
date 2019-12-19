@@ -3,12 +3,32 @@
   <span class="logo logo-right">Sight</span>
 </a>
 
-<div>
-  <a class="text-light" dropdownToggle>
+
+<div class="row" >
+
+  <div class="column">
+
+<div class="dropdown" *ngIf="sprawdzStanowisko()">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Settings
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button">Users</button>
+    <button class="dropdown-item" type="button">System</button>
+    <button class="dropdown-item" type="button">Help</button>
+  </div>
+</div>
+  </div>
+
+  <div class="column">
+<div >
+    <a class="text-light" dropdownToggle>
 
     Witaj : {{ sUser | titlecase }}
 
   </a>
   <button type="button" class="btn btn-link" *ngIf="!loggedIn()" (click)="OpenLogin()">Login</button>
   <button type="button" class="btn btn-link" *ngIf="loggedIn()" (click)="OpenLogout()">Logout</button>
+</div>
+</div>
 </div>

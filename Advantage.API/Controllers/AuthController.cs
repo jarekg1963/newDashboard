@@ -28,126 +28,164 @@ namespace Advantage.API.Controllers
 
         [HttpPost("loginek")]
 
-        public IActionResult loginek([FromBody]TblUser user, string password)
-        {
-            var jestUser = _ctx.TblUser.FirstOrDefault(x => x.FullName == user.FullName);
-            if (jestUser == null) return Unauthorized();
+        // public IActionResult loginek([FromBody]TblUser user, string password)
+        // {
+        //     var jestUser = _ctx.TblUser.FirstOrDefault(x => x.FullName == user.FullName);
+        //     if (jestUser == null) return Unauthorized();
 
-            if (!VerifyPasswordHash(password, jestUser.PasswordHash, jestUser.PasswordSalt))
-                return Unauthorized();
+        //     if (!VerifyPasswordHash(password, jestUser.PasswordHash, jestUser.PasswordSalt))
+        //         return Unauthorized();
 
-            // tworzymy token JWT 
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+        //     // tworzymy token JWT 
+        //     var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+        //     var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new List<Claim>
+        //     var claims = new List<Claim>
+        //               {
+        //                     new Claim(ClaimTypes.Name, jestUser.FullName),
+        //                     new Claim(ClaimTypes.Role, jestUser.position)
+        //             };
+
+        //     var tokeOptions = new JwtSecurityToken(
+        //                      issuer: "http://localhost:5000",
+        //                      audience: "http://localhost:5000",
+        //                       claims: claims,
+        //                      expires: DateTime.Now.AddMinutes(15),
+        //                      signingCredentials: signinCredentials
+        //                  );
+
+        //     var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+        //      return Ok(new { Token = tokenString });
+    // }
+
+    [HttpPost("loginekMax")]
+
+    public IActionResult loginekMax([FromBody]TblUser user, string password)
+    {
+        var jestUser = _ctx.TblUser.FirstOrDefault(x => x.FullName == user.FullName);
+        if (jestUser == null) return Unauthorized();
+
+        if (!VerifyPasswordHash(password, jestUser.PasswordHash, jestUser.PasswordSalt))
+            return Unauthorized();
+
+        // tworzymy token JWT 
+        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new List<Claim>
                       {
                             new Claim(ClaimTypes.Name, jestUser.FullName),
                             new Claim(ClaimTypes.Role, jestUser.position)
                     };
 
-            var tokeOptions = new JwtSecurityToken(
-                             issuer: "http://localhost:5000",
-                             audience: "http://localhost:5000",
-                              claims: claims,
-                             expires: DateTime.Now.AddMinutes(15),
-                             signingCredentials: signinCredentials
-                         );
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-            return Ok(new { Token = tokenString });
+        var tokeOptions = new JwtSecurityToken(
+                         issuer: "http://localhost:5000",
+                         audience: "http://localhost:5000",
+                          claims: claims,
+                         expires: DateTime.Now.AddMinutes(15),
+                         signingCredentials: signinCredentials
+                     );
 
+        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+        return Ok(new { Token = tokenString, username = jestUser.FullName, position = jestUser.position });
+
+    }
+    private IActionResult Json(object p)
+    {
+        throw new NotImplementedException();
+    }
+
+    [HttpPost("register")]
+    public IActionResult register([FromBody]TblUser user, string Password)
+    {
+        byte[] passwordHash, passwordSalt;
+
+        // sprawdzenie czy istniej już użytkownik . 
+
+        if (_ctx.TblUser.Any(x => x.FullName == user.FullName))
+            return BadRequest("User already exist ");
+
+        CreatePasswordHashSalt(Password, out passwordHash, out passwordSalt);
+        user.PasswordHash = passwordHash;
+        user.PasswordSalt = passwordSalt;
+        _ctx.TblUser.Add(user);
+        _ctx.SaveChanges();
+        return Ok(); ;
+
+    }
+
+
+    // GET api/values
+    [HttpPost, Route("login")]
+    public IActionResult Login([FromBody]LoginModel user)
+    {
+        if (user == null)
+        {
+            return BadRequest("Invalid client request");
         }
 
-
-        [HttpPost("register")]
-        public IActionResult register([FromBody]TblUser user, string Password)
+        if (user.UserName == "j" && user.Password == "g")
         {
-            byte[] passwordHash, passwordSalt;
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-            // sprawdzenie czy istniej już użytkownik . 
-
-            if (_ctx.TblUser.Any(x => x.FullName == user.FullName))
-                return BadRequest("User already exist ");
-
-            CreatePasswordHashSalt(Password, out passwordHash, out passwordSalt);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-            _ctx.TblUser.Add(user);
-            _ctx.SaveChanges();
-            return Ok(); ;
-
-        }
-
-
-        // GET api/values
-        [HttpPost, Route("login")]
-        public IActionResult Login([FromBody]LoginModel user)
-        {
-            if (user == null)
-            {
-                return BadRequest("Invalid client request");
-            }
-
-            if (user.UserName == "j" && user.Password == "g")
-            {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                // Prawa dostepu dla grupy 
-                var claims = new List<Claim>
+            // Prawa dostepu dla grupy 
+            var claims = new List<Claim>
                {
                    new Claim(ClaimTypes.Name, user.UserName),
                    new Claim(ClaimTypes.Role, "Manager")
               };
 
 
-                // var claims = new List<Claim>
-                //       {
-                //             new Claim(ClaimTypes.Name, user.UserName),
-                //             new Claim(ClaimTypes.Role, "Operator")
-                //     };
+            // var claims = new List<Claim>
+            //       {
+            //             new Claim(ClaimTypes.Name, user.UserName),
+            //             new Claim(ClaimTypes.Role, "Operator")
+            //     };
 
 
-                var tokeOptions = new JwtSecurityToken(
-                    issuer: "http://localhost:5000",
-                    audience: "http://localhost:5000",
-                     // claims: new List<Claim>(),      // dla uzytkownikow bez grup 
-                     claims: claims,
-                    expires: DateTime.Now.AddMinutes(15),
-                    signingCredentials: signinCredentials
-                );
+            var tokeOptions = new JwtSecurityToken(
+                issuer: "http://localhost:5000",
+                audience: "http://localhost:5000",
+                 // claims: new List<Claim>(),      // dla uzytkownikow bez grup 
+                 claims: claims,
+                expires: DateTime.Now.AddMinutes(15),
+                signingCredentials: signinCredentials
+            );
 
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
-            }
-            else
-            {
-                return Unauthorized();
-            }
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+            return Ok(new { Token = tokenString });
         }
-
-        private void CreatePasswordHashSalt(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        else
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-            }
-        }
-
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
-            {
-                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-                for (int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != passwordHash[i])
-                        return false;
-                }
-                return true;
-            }
-
+            return Unauthorized();
         }
     }
+
+    private void CreatePasswordHashSalt(string password, out byte[] passwordHash, out byte[] passwordSalt)
+    {
+        using (var hmac = new System.Security.Cryptography.HMACSHA512())
+        {
+            passwordSalt = hmac.Key;
+            passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        }
+    }
+
+    private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+    {
+        using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+        {
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            for (int i = 0; i < computedHash.Length; i++)
+            {
+                if (computedHash[i] != passwordHash[i])
+                    return false;
+            }
+            return true;
+        }
+
+    }
+}
 }

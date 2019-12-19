@@ -18,9 +18,13 @@ export class NavbarComponent implements OnInit {
               private toastr: ToastrService) {}
 
 sUser: any;
+sPosition: any;
 
   ngOnInit() {
     this.auth.currentUser.subscribe(msg => this.sUser = msg );
+    this.auth.currentPosition.subscribe(msgP => {this.sPosition = msgP;
+                                                 console.log('Position' + this.sPosition);
+    });
   }
 
   loggedIn() {
@@ -34,7 +38,7 @@ sUser: any;
       //        data: this.params.node.data.derogationId
     });
     dialogRef.afterClosed().subscribe(result => {
-      //      this.data = result;
+
     });
   }
 
@@ -47,7 +51,10 @@ sUser: any;
     this.toastr.success("Sucesfully logout ");
   }
 
-
+  sprawdzStanowisko() {
+    if (this.sPosition === 'Manager') {
+      return true; } else { return false; }
+  }
 
 
 }

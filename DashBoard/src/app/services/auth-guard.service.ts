@@ -19,12 +19,17 @@ public zalogowany: boolean;
 private currentUserSubject: BehaviorSubject<String>;
 public currentUser: Observable<String>;
 
+private currentPositionSubject: BehaviorSubject<String>;
+public currentPosition: Observable<String>;
 
 
 
   constructor( private router: Router , private toastr: ToastrService, private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<string>('');
     this.currentUser = this.currentUserSubject.asObservable();
+
+    this.currentPositionSubject = new BehaviorSubject<string>('');
+    this.currentPosition = this.currentPositionSubject.asObservable();
   }
 
   canActivate(): boolean {
@@ -48,35 +53,50 @@ public currentUser: Observable<String>;
 
 displayUser() {
   const u = localStorage.getItem('user');
-  console.log('u' + u);
   return u;
 }
 
-  loginService(user: User) {
-    return this.http.post<any>('http://localhost:5000/api/auth/login', user.FullName )
-        .pipe(map(res => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            let token = res.token;
-            localStorage.setItem('currentUser', JSON.stringify(user.FullName));
-            localStorage.setItem("jwt", token);
-            this.currentUserSubject.next(user.FullName);
-            return user;
-        }));
-}
+//   loginService(user: User) {
+//     return this.http.post<any>('http://localhost:5000/api/auth/login', user.FullName )
+//         .pipe(map(res => {
+//             // store user details and jwt token in local storage to keep user logged in between page refreshes
+//             let token = res.token;
+//             localStorage.setItem('currentUser', JSON.stringify(user.FullName));
+//             localStorage.setItem("jwt", token);
+//             this.currentUserSubject.next(user.FullName);
+//             return user;
+//         }));
+// }
 
-loginekService(user: User, password: string) {
+loginekService(user: User) {
+
+  // return this.http.post<any>('http://localhost:5000/api/auth/loginek?password=' + user.Password , user )
+  //     .pipe(map(res => {
+  //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+  //         let token = res.token;
+  //         localStorage.setItem('currentUser', JSON.stringify(user.FullName));
+  //         localStorage.setItem("jwt", token);
+  //         this.currentUserSubject.next(user.FullName);
+  //         return user;
+  //     }));
 
 
-  console.log('from serwisu ' + user.FullName);
-  return this.http.post<any>('http://localhost:5000/api/auth/loginek?password=test', user )
+  return this.http.post<any>('http://localhost:5000/api/auth/loginekMax?password=' + user.Password , user )
       .pipe(map(res => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           let token = res.token;
-          localStorage.setItem('currentUser', JSON.stringify(user.FullName));
+
+         // localStorage.setItem('currentUser', JSON.stringify(user.FullName));
+         localStorage.setItem('currentUser', JSON.stringify(res.usename));
           localStorage.setItem("jwt", token);
-          this.currentUserSubject.next(user.FullName);
+          this.currentUserSubject.next(res.username);
+          this.currentPositionSubject.next(res.position);
           return user;
       }));
+
+
 }
+
+
 
 }

@@ -1,3 +1,7 @@
-<button type="button" class="btn-primary" (click)="editRow($event)">Details</button>
-<button type="button" class="btn-secondary" (click)="viewRow()">Edit</button>
-<button type="button" class="btn-success" (click)="deleteHeader($event)">Delete</button>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="Button group example">
+    <button type="button" class="btn btn-outline-primary btn-sm" (click)="editRow($event)">Details</button>
+    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="viewRow()">Edit</button>
+    <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteHeader($event)">Delete</button>
+  </div>
+</div>
