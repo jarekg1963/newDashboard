@@ -1,3 +1,4 @@
+import { AuthGuardService } from './../services/auth-guard.service';
 import { MyTestserviceService } from './../tools/my-testservice.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   todaydate: any;
+  duserName: any;
+
   links =  [
     {"Name": "aaaaaaa",
     "routeValue": "bbbb"},
@@ -19,10 +22,11 @@ export class SidebarComponent implements OnInit {
     "routeValue": "fffffff"}
   ];
 
-  constructor(private _testService:  MyTestserviceService ) { }
+  constructor(private _testService:  MyTestserviceService, private auth: AuthGuardService ) { }
 
   ngOnInit() {
     this.todaydate = this._testService.todayDate();
+    this.auth.currentUser.subscribe(msg => this.duserName = msg );
   }
 
 

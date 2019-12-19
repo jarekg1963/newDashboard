@@ -126,7 +126,8 @@ namespace Advantage.API.Controllers
 
         // DELETE api/order/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        
+                public IActionResult Delete(int id)
         {
             var order = _ctx.Orders.FirstOrDefault(t => t.Id == id);
             if (order == null)

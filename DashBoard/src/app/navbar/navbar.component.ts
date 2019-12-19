@@ -2,6 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { LoginComponent } from "../login/login.component";
 import { MatDialog } from "@angular/material";
 import { Router } from '@angular/router';
+import { AuthGuardService } from '../services/auth-guard.service';
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: "app-navbar",
@@ -9,9 +13,19 @@ import { Router } from '@angular/router';
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(public dialog: MatDialog, private router: Router,
+              private auth: AuthGuardService,
+              private toastr: ToastrService) {}
 
-  ngOnInit() {}
+sUser: any;
+
+  ngOnInit() {
+    this.auth.currentUser.subscribe(msg => this.sUser = msg );
+  }
+
+  loggedIn() {
+    return this.auth.logedIn();
+  }
 
   OpenLogin() {
     const dialogRef = this.dialog.open(LoginComponent, {
@@ -26,8 +40,14 @@ export class NavbarComponent implements OnInit {
 
   OpenLogout() {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("user")
+    this.auth.currentUser = null;
+    this.sUser = '';
     this.router.navigate(["sales"]);
-
+    this.toastr.success("Sucesfully logout ");
   }
+
+
+
 
 }

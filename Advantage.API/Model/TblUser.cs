@@ -12,5 +12,10 @@ namespace Advantage.API.Model
         public string Email { get; set; }
         public byte[] Password { get; set; }
         public byte[] Salt { get; set; }
+        public byte[] PasswordHash { get; set; }
+
+        public byte[] PasswordSalt { get; set; }
+
+        public string position { get; set;}
     }
 }

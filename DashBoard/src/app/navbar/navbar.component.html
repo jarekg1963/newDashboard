@@ -4,6 +4,11 @@
 </a>
 
 <div>
-<button type="button" class="btn btn-link" (click)="OpenLogin()" >Login</button>
-<button type="button" class="btn btn-link" (click)="OpenLogout()" >Logout</button>
+  <a class="text-light" dropdownToggle>
+
+    Witaj : {{ sUser | titlecase }}
+
+  </a>
+  <button type="button" class="btn btn-link" *ngIf="!loggedIn()" (click)="OpenLogin()">Login</button>
+  <button type="button" class="btn btn-link" *ngIf="loggedIn()" (click)="OpenLogout()">Logout</button>
 </div>

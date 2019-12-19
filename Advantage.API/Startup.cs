@@ -31,7 +31,7 @@ namespace Advantage.API
 
             services.AddDbContext<DerogationContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
-
+        
             services.AddCors(opt =>
         {
             opt.AddPolicy("CorsPolicy",
@@ -84,10 +84,10 @@ namespace Advantage.API
             app.UseHttpsRedirection();
             app.UseRouting();
             seed.SeedData(20, 1000);
-// Autoryzacje zabawa
+            // Autoryzacje zabawa
             app.UseAuthentication();
             app.UseAuthorization();
-// Autoryzacje zabawa - koniec 
+            // Autoryzacje zabawa - koniec 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

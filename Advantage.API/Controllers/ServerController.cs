@@ -17,7 +17,8 @@ namespace Advantage.API.Demo.Controllers
 
         // GET api/server
         //  [HttpGet]
-         [HttpGet,Authorize]
+         // [HttpGet,Authorize]
+         [HttpGet,Authorize(Roles = "Manager")]
         public IActionResult Get()
         {
             var response = _ctx.Servers.OrderBy(s=>s.Id).ToList(); 
