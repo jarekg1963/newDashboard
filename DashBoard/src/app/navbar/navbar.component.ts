@@ -4,6 +4,7 @@ import { MatDialog } from "@angular/material";
 import { Router } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserslistComponent } from '../users/userslist/userslist.component';
 
 
 
@@ -56,5 +57,16 @@ sPosition: any;
       return true; } else { return false; }
   }
 
+  userlist() {
+    const dialogRef = this.dialog.open(UserslistComponent, {
+      width: "1100px",
+      height: "680px",
+      hasBackdrop: false
+      //        data: this.params.node.data.derogationId
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
 
 }

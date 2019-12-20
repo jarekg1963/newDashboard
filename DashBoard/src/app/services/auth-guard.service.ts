@@ -93,10 +93,5 @@ loginekService(user: User) {
           this.currentPositionSubject.next(res.position);
           return user;
       }));
-
-
 }
-
-
-
 }

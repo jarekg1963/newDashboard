@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
     });
 
     this.ngForm.patchValue({
-      FullName: "",
-      Password: ""
+      FullName: "Jarek",
+      Password: "test"
     });
   }
 

@@ -87,5 +87,10 @@ getLudzie() {
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
+getTblUsers() {
+  return this._http.get('http://localhost:5000/api/users')
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
 }
 

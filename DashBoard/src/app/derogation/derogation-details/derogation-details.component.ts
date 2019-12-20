@@ -22,7 +22,7 @@ export class DerogationDetailsComponent implements OnInit {
       headerName: "Actions",
       field: "action",
       cellRendererFramework: CellbuttondetailsComponent,
-      width: 130
+      width: 120
     },
     { headerName: "derogationId", field: "derogationId", sortable: true, width: 50 },
     { headerName: "modelName", field: "modelName", sortable: true, width: 150 },

@@ -36,6 +36,9 @@ import { Testservisucom1Component } from './tools/testservisucom1/testservisucom
 import { Testservisucom2Component } from './tools/testservisucom2/testservisucom2.component';
 import { LoginComponent } from './login/login.component';
 import { JwtModule } from "@auth0/angular-jwt";
+import { UserslistComponent } from './users/userslist/userslist.component';
+import { UsercellbuttonComponent } from './users/usercellbutton/usercellbutton.component';
+import { UsereditComponent } from './users/useredit/useredit.component';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -65,7 +68,10 @@ export function tokenGetter() {
     AddnewderogationitemComponent,
     Testservisucom1Component,
     Testservisucom2Component,
-    LoginComponent
+    LoginComponent,
+    UserslistComponent,
+    UsercellbuttonComponent,
+    UsereditComponent
 
   ],
   imports: [
@@ -98,7 +104,10 @@ export function tokenGetter() {
     ConfirmationdialogComponent,
     NewheaderderogationComponent,
     AddnewderogationitemComponent,
-    LoginComponent
+    LoginComponent,
+    UserslistComponent,
+    UsercellbuttonComponent,
+    UsereditComponent
 
   ]
 })
