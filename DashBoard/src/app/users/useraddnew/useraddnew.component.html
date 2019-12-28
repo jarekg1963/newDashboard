@@ -1,27 +1,29 @@
-
 <form [formGroup]="edForm" autocomplete="off" (ngSubmit)="onFormSubmit(edForm.value)" novalidate>
-
   <mat-card class="example-card">
 
     <mat-grid-list cols="1" row="1" rowHeight="80px">
-      <mat-grid-tile class="class-naglowek" [colspan]='1' [rowspan]='1'>Edit user </mat-grid-tile>
+      <mat-grid-tile class="class-naglowek" [colspan]='1' [rowspan]='1'>New user </mat-grid-tile>
 
     </mat-grid-list>
 
 
+
+
     <mat-grid-list cols="2" row="4" [style.background]="'white'" rowHeight="140px">
+
+
 
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field  appearance="standard" style="width: 220px;" floatlabel="never">
           <mat-label>Full name </mat-label>
-          <input matInput placeholder="fullName" required [formControl]="fullName" >
+          <input matInput placeholder="fullName" required [formControl]="FullName" >
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field appearance="standard" style="width: 220px;" floatlabel="never">
           <mat-label>Email </mat-label>
-          <input matInput placeholder="Email" required [formControl]="email" >
+          <input matInput placeholder="Email" required [formControl]="Email" >
         </mat-form-field>
       </mat-grid-tile>
 
@@ -45,18 +47,22 @@
 
       </mat-grid-tile>
 
-  </mat-grid-list>
-</mat-card>
+    </mat-grid-list>
+  </mat-card>
 
-<mat-grid-list cols="2" row="1" rowHeight="80px">
-  <mat-grid-tile class="class-naglowek" [colspan]='1' [rowspan]='1'>
 
-<button type="button" class="btn btn-secondary ml-4" (click)="onNoClick()">Cancel</button>
-<button type="button" class="btn btn-secondary ml-4" (click)="onFormSubmit(edForm.value)">Save</button>
+
+  <mat-grid-list cols="2" row="1" rowHeight="80px">
+
+    <mat-grid-tile class="class-naglowek" [colspan]='1' [rowspan]='1'>
+
+  <button type="button" class="btn btn-secondary ml-4" (click)="onNoClick()">Cancel</button>
+  <button type="button" class="btn btn-secondary ml-4" (click)="onFormSubmit(edForm.value)">Save</button>
 </mat-grid-tile>
+
+
+
+
 </mat-grid-list>
 
 </form>
-
-
-

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ConfirmationdialogComponent } from 'src/app/tools/confirmationdialog/confirmationdialog.component';
 import { DerogationServicesService } from 'src/app/services/derogation-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { UsereditComponent } from '../useredit/useredit.component';
+import { CommonfuncionsService } from 'src/app/services/commonfuncions.service';
+
 
 @Component({
   selector: 'app-usercellbutton',
@@ -11,6 +14,8 @@ import { UsereditComponent } from '../useredit/useredit.component';
   styleUrls: ['./usercellbutton.component.css']
 })
 export class UsercellbuttonComponent implements OnInit {
+
+
   data: number;
   params: any;
 
@@ -19,11 +24,15 @@ export class UsercellbuttonComponent implements OnInit {
   }
   constructor(    public dialog: MatDialog,
                   private _derogationService: DerogationServicesService,
-                  private toastr: ToastrService) { }
+                  private toastr: ToastrService,
+                  private eventEmitterService: CommonfuncionsService
+                  ) { }
 
 
   ngOnInit() {
   }
+
+
 
   editDetailRow() {
     const dialogConfig = new MatDialogConfig();
@@ -34,38 +43,43 @@ export class UsercellbuttonComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.params.node.data.userId;
 
-    this.dialog.open(UsereditComponent, dialogConfig);
+    const dialogEdit = this.dialog.open(UsereditComponent, dialogConfig);
+    dialogEdit.afterClosed().subscribe(async res => {
+      await this.eventEmitterService.odswierzGridaUsers();
+    });
+
   }
 
 
-  openDialogDelete($event): void {
-    const params = {
-      event: $event
-    };
-    const dialogRef = this.dialog.open(ConfirmationdialogComponent, {
+async openDialogDelete($event) {
+    // const params = {
+    //   event: $event
+    // };
+    const dialogRefDialog = this.dialog.open(ConfirmationdialogComponent, {
       width: "350px",
       data: "Do you confirm the deletion of this data?"
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRefDialog.afterClosed().subscribe(async result => {
       if (result) {
-        this.deleteUserItem(this.params.node.data.userId);
+        await this.deleteUserItem(this.params.node.data.userId);  // Otwiera okno dialogowe do kasowania
+        this.eventEmitterService.odswierzGridaUsers();            // Uruchamia funkcje w komponencie userlist do odswierzenia
       } else {
       }
     });
+
+
   }
 
+  async deleteUserItem(id: number) {
+    return this._derogationService.deleteUser(id).toPromise();
 
-
-
-
-  deleteUserItem(id) {
-    // return this._derogationService.deleteDerodationItem(id).subscribe(data => {
-     // this.toastr.success("Deleted ", "OK");
-    // });
-
-
-      this.toastr.success("Deleted ", "OK");
+    /*
+    .subscribe(data => {
+     this.toastr.success("Deleted ", "OK"),
+     err => this.toastr.error("No record found ");
+  });
+  */
   }
 
 }

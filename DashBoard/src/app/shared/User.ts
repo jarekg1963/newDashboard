@@ -1,22 +1,8 @@
 export interface User {
-  UserId: number;
+  UserId?: number;
   FullName: string;
-  Email: string;
+  Email?: string;
   Password: string;
-  Position: string;
+  position?: string;
 }
-
-
-
-
-
-// export interface User {
-//     id: number;
-//     username: string;
-//     email: string;
-//     state: string;
-//     password: string;
-// }
-
-
 

@@ -6,6 +6,7 @@ import { ToastrService } from "ngx-toastr";
 import { AuthGuardService } from "../services/auth-guard.service";
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
+import { User } from '../shared/User';
 
 @Component({
   selector: "app-login",
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     this.ngForm.patchValue({
       FullName: "Jarek",
-      Password: "test"
+      Password: "password"
     });
   }
 
@@ -61,7 +62,9 @@ export class LoginComponent implements OnInit {
 
   sLoginClick() {
 
-    this.auth.loginekService(this.ngForm.value).subscribe(
+
+
+    this.auth.loginService(this.ngForm.value).subscribe(
       next => {
         this.toastr.success("Zalogowano pomyślnie użytkownika : " + next.FullName);
       },

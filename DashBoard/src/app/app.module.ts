@@ -39,6 +39,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { UserslistComponent } from './users/userslist/userslist.component';
 import { UsercellbuttonComponent } from './users/usercellbutton/usercellbutton.component';
 import { UsereditComponent } from './users/useredit/useredit.component';
+import { UseraddnewComponent } from './users/useraddnew/useraddnew.component';
+import { CommonfuncionsService } from './services/commonfuncions.service';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -71,7 +73,8 @@ export function tokenGetter() {
     LoginComponent,
     UserslistComponent,
     UsercellbuttonComponent,
-    UsereditComponent
+    UsereditComponent,
+    UseraddnewComponent
 
   ],
   imports: [
@@ -94,7 +97,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [SalesDataService, DerogationServicesService,DatePipe],
+  providers: [SalesDataService, DerogationServicesService, DatePipe, CommonfuncionsService],
   bootstrap: [AppComponent],
   entryComponents: [
     CellCustomComponent,
@@ -107,7 +110,8 @@ export function tokenGetter() {
     LoginComponent,
     UserslistComponent,
     UsercellbuttonComponent,
-    UsereditComponent
+    UsereditComponent,
+    UseraddnewComponent
 
   ]
 })

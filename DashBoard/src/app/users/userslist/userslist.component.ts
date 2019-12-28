@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject, Input } from '@angular/core';
+import { MatDialogRef, MatDialogConfig, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { DerogationServicesService } from 'src/app/services/derogation-services.service';
-import { CellCustomComponent } from 'src/app/derogation/cell-custom/cell-custom.component';
+
 import { AllCommunityModules } from '@ag-grid-community/all-modules';
 import { UsercellbuttonComponent } from '../usercellbutton/usercellbutton.component';
+import { UseraddnewComponent } from '../useraddnew/useraddnew.component';
+import { CommonfuncionsService } from 'src/app/services/commonfuncions.service';
+
 
 @Component({
   selector: 'app-userslist',
@@ -11,6 +14,8 @@ import { UsercellbuttonComponent } from '../usercellbutton/usercellbutton.compon
   styleUrls: ['./userslist.component.css']
 })
 export class UserslistComponent implements OnInit {
+
+
   rowTblUsers: any;
   modules = AllCommunityModules;
 
@@ -51,16 +56,34 @@ export class UserslistComponent implements OnInit {
   ];
 
   constructor(public dialogRef: MatDialogRef<UserslistComponent>,
-              private _derogationservice: DerogationServicesService) { }
+              private _derogationservice: DerogationServicesService,
+              public dialog: MatDialog,
+              @Inject(MAT_DIALOG_DATA) public data: number,
+              private eventEmitterService: CommonfuncionsService
+              ) { }
+
+
 
   ngOnInit() {
     this.getUsers();
+    if (this.eventEmitterService.subsVar === undefined) {
+    this.eventEmitterService.subsVar = this.eventEmitterService.
+    invokeOdswiezUseraPoDelete.subscribe( (name: string) => {
+         this.getUsers();
+      });
+    }
+
+
   }
 
-  getUsers(): void {
+  // async getUsers() {
+  //   this.rowTblUsers = await  this._derogationservice.getTblUsers().toPromise();
+  // }
+
+
+ async getUsers() {
     this._derogationservice.getTblUsers().subscribe(res => {
       this.rowTblUsers = res;
-      console.log(this.rowTblUsers);
     });
   }
 
@@ -69,6 +92,22 @@ export class UserslistComponent implements OnInit {
 }
 
 onaddNewClick() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "1150px";
+    dialogConfig.height = "680px";
+    dialogConfig.autoFocus = true;
+    // dane transportowane do formularza
+    dialogConfig.data = this.data;
 
+    const dialogReflo = this.dialog.open(UseraddnewComponent, dialogConfig);
+    dialogReflo.afterClosed().subscribe(res => {
+      this.getUsers();
+    });
+}
+
+
+refresh() {
+  this.getUsers();
 }
 }

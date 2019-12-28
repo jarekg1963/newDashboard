@@ -3,6 +3,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { DerogationItem } from '../shared/DerogationItem';
+import { User } from '../shared/User';
 
 @Injectable({
   providedIn: 'root'
@@ -89,6 +90,27 @@ getLudzie() {
 
 getTblUsers() {
   return this._http.get('http://localhost:5000/api/users')
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
+getTblUsersById(iId: number) {
+  return this._http.get('http://localhost:5000/api/users/' + iId)
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
+updateTblUser(id: any, item: User): Observable<any> {
+  return this._http.put('http://localhost:5000/api/users/' + id , item, this.httpOptions)
+  .pipe(retry(1), catchError(this.errorHandl));
+  }
+
+
+addNewUser(user: User , pass: string): Observable<any> {
+  return this._http.post('http://localhost:5000/api/Users/registerNewUser?Password=' + pass , user)
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
+deleteUser(id: number) {
+  return this._http.delete('http://localhost:5000/api/Users/' + id )
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
