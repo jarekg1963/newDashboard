@@ -9,13 +9,18 @@ import {
 
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 // import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
 import {MatIconModule} from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 
 
@@ -33,7 +38,11 @@ import {MatIconModule} from '@angular/material';
       MatInputModule,
       MatSelectModule,
       MatCheckboxModule,
-      MatIconModule
+      MatIconModule,
+      MatTableModule,
+      MatToolbarModule,
+      MatPaginatorModule,
+      MatSortModule
    ],
    exports: [
       MatDatepickerModule,
@@ -47,10 +56,17 @@ import {MatIconModule} from '@angular/material';
       MatSelectModule,
      MatCheckboxModule,
      MatFormFieldModule,
-     MatIconModule
+     MatIconModule,
+     MatTableModule,
+     MatToolbarModule,
+     MatPaginatorModule,
+     MatSortModule
    ],
    providers: [
-    // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'} }
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
   ],
 
 })

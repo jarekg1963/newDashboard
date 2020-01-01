@@ -114,5 +114,14 @@ deleteUser(id: number) {
   .pipe(retry(1), catchError(this.errorHandl));
 }
 
+// -------------------Internet links --------------------------------------------
+
+getInternetLinks() {
+  return this._http.get('http://localhost:5000/api/InternetLinks')
+  .pipe(retry(1), catchError(this.errorHandl));
+}
+
+
+// -------------------------------------------------------------------------------
 }
 

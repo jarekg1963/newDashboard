@@ -1,0 +1,20 @@
+<mat-grid-list cols="2" row="1" rowHeight="80px">
+  <mat-grid-tile class="class-naglowek" [colspan]='1' [rowspan]='1'>Usefull internet links </mat-grid-tile>
+  <mat-grid-tile [colspan]='1' [rowspan]='1'>
+    <button type="button" class="btn btn-success btn-sm" (click)="onaddNewClick()">Add new item</button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="container mat-elevation-z8">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Filter issues">
+    </mat-form-field>
+
+
+  </div>
+
+</div>
+
+<button type="button" class="btn btn-secondary ml-4" (click)="onNoClick()">Close</button>
+<button type="button" class="btn btn-secondary ml-4" (click)="refresh()">Refresh </button>

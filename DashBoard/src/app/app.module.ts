@@ -41,6 +41,12 @@ import { UsercellbuttonComponent } from './users/usercellbutton/usercellbutton.c
 import { UsereditComponent } from './users/useredit/useredit.component';
 import { UseraddnewComponent } from './users/useraddnew/useraddnew.component';
 import { CommonfuncionsService } from './services/commonfuncions.service';
+import { ListalinkowComponent } from './linki/listalinkow/listalinkow.component';
+import { ExampleIssuesComponent } from './linki/example-issues/example-issues.component';
+import { AddComponent } from './linki/exampleIssues/add/add.component';
+import { DeleteComponent } from './linki/exampleIssues/delete/delete.component';
+import { EditComponent } from './linki/exampleIssues/edit/edit.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -74,7 +80,12 @@ export function tokenGetter() {
     UserslistComponent,
     UsercellbuttonComponent,
     UsereditComponent,
-    UseraddnewComponent
+    UseraddnewComponent,
+    ListalinkowComponent,
+    ExampleIssuesComponent,
+    AddComponent,
+    DeleteComponent,
+    EditComponent
 
   ],
   imports: [
@@ -111,7 +122,12 @@ export function tokenGetter() {
     UserslistComponent,
     UsercellbuttonComponent,
     UsereditComponent,
-    UseraddnewComponent
+    UseraddnewComponent,
+    ListalinkowComponent,
+    ExampleIssuesComponent,
+    AddComponent,
+    DeleteComponent,
+    EditComponent
 
   ]
 })

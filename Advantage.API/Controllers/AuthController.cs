@@ -27,6 +27,43 @@ namespace Advantage.API.Controllers
         }
 
 
+//-----------------------LOGINEK------------------------------------------------------------
+
+
+   [HttpPost("loginek")]
+
+        public IActionResult loginek([FromBody]TblUser user)
+        {
+            var jestUser = _ctx.TblUser.FirstOrDefault(x => x.FullName == user.FullName);
+            if (jestUser == null) return Unauthorized();
+
+            if (!VerifyPasswordHash(user.Password, jestUser.PasswordHash, jestUser.PasswordSalt))
+                return Unauthorized();
+
+            // tworzymy token JWT 
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new List<Claim>
+                      {
+                            new Claim(ClaimTypes.Name, jestUser.FullName),
+                            new Claim(ClaimTypes.Role, jestUser.position)
+                    };
+            var tokeOptions = new JwtSecurityToken(
+                             issuer: "http://localhost:5000",
+                             audience: "http://localhost:5000",
+                              claims: claims,
+                             expires: DateTime.Now.AddMinutes(15),
+                             signingCredentials: signinCredentials
+                         );
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+            return Ok(new { Token = tokenString, username = jestUser.FullName, position = jestUser.position });
+
+        }
+
+//-------------------------------------------------------------------------------------------
+
 
         [HttpPost("login")]
 

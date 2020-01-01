@@ -1,23 +1,31 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import { MatDialogRef, MatDialogConfig, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { DerogationServicesService } from 'src/app/services/derogation-services.service';
+import { async } from "@angular/core/testing";
+import { Component, OnInit, Inject, Input } from "@angular/core";
+import {
+  MatDialogRef,
+  MatDialogConfig,
+  MatDialog,
+  MAT_DIALOG_DATA
+} from "@angular/material";
+import { DerogationServicesService } from "src/app/services/derogation-services.service";
 
-import { AllCommunityModules } from '@ag-grid-community/all-modules';
-import { UsercellbuttonComponent } from '../usercellbutton/usercellbutton.component';
-import { UseraddnewComponent } from '../useraddnew/useraddnew.component';
-import { CommonfuncionsService } from 'src/app/services/commonfuncions.service';
-
+import { AllCommunityModules } from "@ag-grid-community/all-modules";
+import { UsercellbuttonComponent } from "../usercellbutton/usercellbutton.component";
+import { UseraddnewComponent } from "../useraddnew/useraddnew.component";
+import { CommonfuncionsService } from "src/app/services/commonfuncions.service";
 
 @Component({
-  selector: 'app-userslist',
-  templateUrl: './userslist.component.html',
-  styleUrls: ['./userslist.component.css']
+  selector: "app-userslist",
+  templateUrl: "./userslist.component.html",
+  styleUrls: ["./userslist.component.css"]
 })
 export class UserslistComponent implements OnInit {
-
-
   rowTblUsers: any;
   modules = AllCommunityModules;
+
+  // test
+  private gridApi;
+  private gridColumnApi;
+  // test koniec
 
   columnDefs = [
     {
@@ -37,7 +45,7 @@ export class UserslistComponent implements OnInit {
       headerName: "fullName",
       field: "fullName",
       width: 300,
-      sortable: true,
+      sortable: true
     },
     {
       headerName: "email",
@@ -55,43 +63,46 @@ export class UserslistComponent implements OnInit {
     }
   ];
 
-  constructor(public dialogRef: MatDialogRef<UserslistComponent>,
-              private _derogationservice: DerogationServicesService,
-              public dialog: MatDialog,
-              @Inject(MAT_DIALOG_DATA) public data: number,
-              private eventEmitterService: CommonfuncionsService
-              ) { }
-
-
+  constructor(
+    public dialogRef: MatDialogRef<UserslistComponent>,
+    private _derogationservice: DerogationServicesService,
+    public dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: number,
+    private eventEmitterService: CommonfuncionsService
+  ) {}
 
   ngOnInit() {
     this.getUsers();
     if (this.eventEmitterService.subsVar === undefined) {
-    this.eventEmitterService.subsVar = this.eventEmitterService.
-    invokeOdswiezUseraPoDelete.subscribe( (name: string) => {
-         this.getUsers();
-      });
+      this.eventEmitterService.subsVar = this.eventEmitterService.invokeOdswiezUseraPoDelete.subscribe(
+        (name: string) => {
+          this.getUsers();
+        }
+      );
     }
-
-
   }
 
-  // async getUsers() {
-  //   this.rowTblUsers = await  this._derogationservice.getTblUsers().toPromise();
-  // }
-
-
- async getUsers() {
-    this._derogationservice.getTblUsers().subscribe(res => {
-      this.rowTblUsers = res;
-    });
+  onGridReady(params) {                // do sprawdzenie czy działa przy odswierzaniu po delete
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    this.getUsers();
   }
+
+  async getUsers() {
+    this.rowTblUsers = await this._derogationservice.getTblUsers().toPromise();
+  }
+
+  //  async getUsers() {
+  //     this._derogationservice.getTblUsers().subscribe(res => {
+  //       this.rowTblUsers = res;
+  //     });
+  //   }
 
   onNoClick() {
-  this.dialogRef.close();
-}
+    this.dialogRef.close();
+  }
 
-onaddNewClick() {
+  onaddNewClick() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = "1150px";
@@ -104,10 +115,9 @@ onaddNewClick() {
     dialogReflo.afterClosed().subscribe(res => {
       this.getUsers();
     });
-}
+  }
 
-
-refresh() {
-  this.getUsers();
-}
+  refresh() {
+    this.getUsers();
+  }
 }

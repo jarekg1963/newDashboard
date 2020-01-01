@@ -27,6 +27,7 @@ namespace Advantage.API.Model
 
         public virtual DbSet<TblUser> TblUser { get; set; }
 
+        public virtual DbSet<InternetLinks> InternetLinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,27 +37,27 @@ namespace Advantage.API.Model
             }
         }
 
- protected override void OnModelCreating(ModelBuilder modelBuilder)
- {
-      modelBuilder.Entity<TblUser>(entity =>
-            {
-                entity.HasKey(e => e.UserId);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TblUser>(entity =>
+                  {
+                      entity.HasKey(e => e.UserId);
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                      entity.Property(e => e.UserId).HasColumnName("UserID");
 
-                entity.Property(e => e.Email)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                      entity.Property(e => e.Email)
+                          .HasMaxLength(50)
+                          .IsUnicode(false);
 
-                entity.Property(e => e.FullName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                      entity.Property(e => e.FullName)
+                          .HasMaxLength(50)
+                          .IsUnicode(false);
 
-                entity.Property(e => e.Password).HasMaxLength(128);
+                      entity.Property(e => e.Password).HasMaxLength(128);
 
-                entity.Property(e => e.Salt).HasMaxLength(128);
-            });
- }
+                      entity.Property(e => e.Salt).HasMaxLength(128);
+                  });
+        }
 
 
     }

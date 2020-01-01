@@ -59,7 +59,7 @@ export class AuthGuardService implements CanActivate {
     console.log (' Pass user z serwisu login ' + user.Password)
     return this.http
       .post<any>(
-        "http://localhost:5000/api/auth/login?password=" + user.Password  ,
+        "http://localhost:5000/api/auth/loginek?" ,
       user
       )
       .pipe(

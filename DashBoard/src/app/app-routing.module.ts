@@ -5,6 +5,7 @@ import { SectionSalesComponent } from './sections/section-sales/section-sales.co
 import { SectionOrdersComponent } from './sections/section-orders/section-orders.component';
 import { SectionHealthComponent } from './sections/section-health/section-health.component';
 import { AuthGuardService } from '../app/services/auth-guard.service';
+import { ExampleIssuesComponent } from './linki/example-issues/example-issues.component';
 
 
 const routes: Routes = [
@@ -12,9 +13,10 @@ const routes: Routes = [
   { path: 'orders', component: SectionOrdersComponent ,  canActivate: [AuthGuardService] },
   { path: 'health', component: SectionHealthComponent },
   { path: 'derogationHeader', component: DerogationheaderComponent},
-
+  { path: 'internetLinks', component: ExampleIssuesComponent},
   { path: '', redirectTo: '/sales', pathMatch: 'full'},
 ];
+
 
 
 @NgModule({
