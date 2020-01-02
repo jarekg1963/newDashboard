@@ -6,6 +6,7 @@ import { SectionOrdersComponent } from './sections/section-orders/section-orders
 import { SectionHealthComponent } from './sections/section-health/section-health.component';
 import { AuthGuardService } from '../app/services/auth-guard.service';
 import { ExampleIssuesComponent } from './linki/example-issues/example-issues.component';
+import { NgxeditorComponent } from './ngxeditor/ngxeditor.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'health', component: SectionHealthComponent },
   { path: 'derogationHeader', component: DerogationheaderComponent},
   { path: 'internetLinks', component: ExampleIssuesComponent},
+  { path: 'ngxeditor', component: NgxeditorComponent},
   { path: '', redirectTo: '/sales', pathMatch: 'full'},
 ];
 

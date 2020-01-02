@@ -46,6 +46,9 @@ import { ExampleIssuesComponent } from './linki/example-issues/example-issues.co
 import { AddComponent } from './linki/exampleIssues/add/add.component';
 import { DeleteComponent } from './linki/exampleIssues/delete/delete.component';
 import { EditComponent } from './linki/exampleIssues/edit/edit.component';
+import { NgxeditorComponent } from './ngxeditor/ngxeditor.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 export function tokenGetter() {
@@ -85,7 +88,8 @@ export function tokenGetter() {
     ExampleIssuesComponent,
     AddComponent,
     DeleteComponent,
-    EditComponent
+    EditComponent,
+    NgxeditorComponent
 
   ],
   imports: [
@@ -99,7 +103,9 @@ export function tokenGetter() {
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     MatFormFieldModule,
+    NgxEditorModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
