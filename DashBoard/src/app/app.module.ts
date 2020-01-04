@@ -49,6 +49,9 @@ import { EditComponent } from './linki/exampleIssues/edit/edit.component';
 import { NgxeditorComponent } from './ngxeditor/ngxeditor.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {  NgxDocViewerModule } from 'ngx-doc-viewer';
+import { LinkidocumentsComponent } from './linki/linkidocuments/linkidocuments.component';
+import { BieganieComponent } from './sport/trening/bieganie/bieganie.component';
 
 
 export function tokenGetter() {
@@ -89,12 +92,13 @@ export function tokenGetter() {
     AddComponent,
     DeleteComponent,
     EditComponent,
-    NgxeditorComponent
+    NgxeditorComponent,
+    LinkidocumentsComponent,
+    BieganieComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ChartsModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
@@ -106,13 +110,15 @@ export function tokenGetter() {
     AngularFontAwesomeModule,
     MatFormFieldModule,
     NgxEditorModule,
+    NgxDocViewerModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ["localhost:5000"],
         blacklistedRoutes: []
       }
-    })
+    }),
+    AppRoutingModule
   ],
   providers: [SalesDataService, DerogationServicesService, DatePipe, CommonfuncionsService],
   bootstrap: [AppComponent],

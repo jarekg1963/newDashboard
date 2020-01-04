@@ -1,0 +1,126 @@
+create 
+
+echo "# test" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/jarekg1963/DashboardKurs.git
+git push -u origin master
+
+
+push
+git remote add origin https://github.com/jarekg1963/DashboardKurs.git
+git push -u origin master
+
+
+
+https://www.youtube.com/watch?v=TA5ty7pEo5k  oraz GIT -> https://github.com/wesdoyle/ng-sight
+
+na marginesie 
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 3.0.0
+
+Instalacja ef !!!!!!!!
+
+dotnet tool install --global dotnet-ef    ------>  sprawdzenie dotnet ef ----------> kon 
+
+notatki 
+
+1. mkdir Advantage.API
+2. cd Advantage.API
+3. dotnet new webapi
+4. code .
+5. Model folder
+	Customer.cs
+	Order.cs
+	Server.cs
+6. DB context 
+	ApiContext.cs
+7. Tworzymy repozytorium 
+	git init 
+	git add .
+	git commit -m "Initial commit"
+	
+8. *.csproj dodajemy pakiety / referencje  
+	w ItemGroup 
+		...Design...
+		...Tools...
+		...SqlLight...
+		
+		  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+	
+	    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
+	
+	
+	  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+	dotnet restore 
+	
+	dodajemy secreat 
+	
+9. testujemy secreat
+	dotnet user-secrets -h
+	
+10 Sqlite - kopiujemy plik 
+	1. dodajemy connection string do appsetting.json  
+	  "ConnectionStrings": {
+    "DefaultConnection": "Data Source = Baza.db"
+      },
+	2. Modyfikujemy startup.cs   sekcja ConfigureServices 
+		  services.AddDbContext<ApiContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+		  
+11. dotnet ef migrations add MyFirstMigration
+12. dotnet ef database update
+		  
+	
+	
+14. Starujemy s frontendem angularem 
+
+ng new DashBoard
+ng g c navbar
+ng g c sidebar
+
+npm install bootstrap
+
+npm install jquery
+
+npm install popper.js --save
+npm install tooltip.js --save
+npm install chart.js --save
+
+angular.json
+ "scripts": [
+              "../DashBoard/node_modules/jquery/dist/jquery.min.js",
+              "../DashBoard/node_modules/popper.js/popper.min.js",
+              "../DashBoard/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "../DashBoard/node_modules/chart.js/dist/Chart.min.js",
+              "src/styles.css"
+			  ]
+
+
+15.biblioteka do wyswietlania wykresow ng2-charts do zastowsowania w Angularze do Chart.js 
+
+npm install ng2-charts@2.3.0 --save
+
+npm install chart.js --save
+
+import { ChartsModule } from 'ng2-charts';
+ 
+// In your App's module:
+imports: [
+   ChartsModule
+]
+
+
+
+Gridy do derogacji 
+
+npm i ng2-table --save
+
+
+bootstap 
+
+npm install --save @ng-bootstrap/ng-bootstrap

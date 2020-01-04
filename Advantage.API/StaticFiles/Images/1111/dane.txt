@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    注意: 除了手动编辑此文件以外，您还可以使用 
+    Web 管理工具来配置应用程序的设置。可以使用 Visual Studio 中的
+     “网站”->“Asp.Net 配置”选项。
+    设置和注释的完整列表在 
+    machine.config.comments 中，该文件通常位于 
+    \Windows\Microsoft.Net\Framework\v2.x\Config 中
+-->
+<configuration>
+  <configSections>
+    <sectionGroup name="system.web.extensions" type="System.Web.Configuration.SystemWebExtensionsSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+      <sectionGroup name="scripting" type="System.Web.Configuration.ScriptingSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+        <!--<section name="scriptResourceHandler" type="System.Web.Configuration.ScriptingScriptResourceHandlerSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>-->
+        <sectionGroup name="webServices" type="System.Web.Configuration.ScriptingWebServicesSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+          <!--<section name="jsonSerialization" type="System.Web.Configuration.ScriptingJsonSerializationSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="Everywhere"/>-->
+          <!--<section name="profileService" type="System.Web.Configuration.ScriptingProfileServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+          <section name="authenticationService" type="System.Web.Configuration.ScriptingAuthenticationServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+          <section name="roleService" type="System.Web.Configuration.ScriptingRoleServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>-->
+          <!--<section name="extnet" type="Ext.Net.GlobalConfig" requirePermission="false"/>-->
+        </sectionGroup>
+      </sectionGroup>
+    </sectionGroup>
+    <section name="infragistics.web" type="System.Configuration.SingleTagSectionHandler,System, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  </configSections>
+  <infragistics.web styleSetName="Nautilus" styleSetPath="~/ig_res/" />
+  <appSettings>
+    <!--开发版本-->
+    <add key="DEVDBPWD" value="5DCsrAbB2uVcAHNix7vAww==" />
+    <!--eflow-->
+    <add key="DEVEDBPWD" value="p6B2YsNiZgal3WX5iwp2hg==" />
+    <!--测试版-->
+    <add key="QASDBPWD" value="5DCsrAbB2uVcAHNix7vAww==" />
+    <!--eflow-->
+    <add key="QASEDBPWD" value="p6B2YsNiZgal3WX5iwp2hg==" />
+    <!--debug版-->
+    <add key="DEBUGDBPWD" value="oGGhVlaY2y35Z0g/0EEdZQ==" />
+    <!--eflow-->
+    <add key="DEBUGEDBPWD" value="TvlOkCpcAte8/7Pj0Sb0Yg==" />
+    <!--正式版-->
+    <add key="PRDDBPWD" value="oGGhVlaY2y35Z0g/0EEdZQ==" />
+    <!--eflow-->
+    <add key="PRDEDBPWD" value="TvlOkCpcAte8/7Pj0Sb0Yg==" />
+    <add key="LoginUrl" value="https://ap2.tpv-tech.com/ITSDLogin (intranet, in office network) or https://itsd.tpv-tech.com/ (internet, out of office network)" />
+    <add key="orgWS.Service" value="http://ws.tpvaoc.com/ORGWS/Service.asmx" />
+    <add key="TpvisionOrgWS.Service" value="http://ws.tpvaoc.com/TPvisionOrgWS/Service.asmx" />
+    <!--<add key="PMSUrl" value="http://172.16.144.59/implog.php"/>-->
+    <add key="PMSUrl" value="http://172.20.2.38/implogitsd.php" />
+    <add key="eflowAccWS.outapi" value="http://cnhqvs1002/efws/outapi.asmx" />
+    <add key="MyService.svcUserAuth" value="http://ws.tpvaoc.com/wbsTPV_AOC_User/svcUserAuth.asmx" />
+    <add key="ORGPWD" value="oGGhVlaY2y35Z0g/0EEdZQ==" />
+    <add key="TPVISONPWD" value="3jhJ9S2zHlLQPveeOiUaIQ==" />
+    <add key="MailServer" value="172.20.2.5" />
+    <add key="MailFrom" value="ITServiceDesk@tpv-tech.com" />
+    <add key="SmtpPort" value="25" />
+    <add key="MailUser" value="ITServiceDesk" />
+    <add key="MailPassword" value="Atdadmin!" />
+    <add key="IsTesting" value="N" />
+    <add key="MailTo" value="zhuang.chen@tpv-tech.com;" />
+    <!--<add key="AssetSAP.Asset" value="http://172.20.1.70:81/AssetSAP/Asset.asmx"/>-->
+    <add key="AssetSAP.Asset" value="http://ws.tpvaoc.com/AssetSAP/Asset.asmx" />
+    <add key="Mode" value="DEBUG" />
+    <add key="UploadFileExt" value="*.doc;*.docx;*.xls;*.xlsx;*.pdf;*.rar;*.zip;*.7z;*.jpg;*.jpeg;*.txt;*.tif;*.msg;*.ppt;*.htm;*.html;*.dwg;*.bak;*.csv;*.xml;*.wps;*.wtf;*.rtf;*.xla;*.xlam;*.xlt;*.xltm;*.xltx;*.xlsb" />
+    <add key="UploadFileDesc" value="office文档/pdf文件/jpg图片/压缩文件" />
+    <add key="UploadSizeLimit_M" value="4" />
+    <add key="PageSize" value="20" />
+    <add key="ProjectLastStep" value="55" />
+        <!--20181123 XQ.Y添加,最大角色等级设为45 -->
+    <add key="ProjectMaxRoleLevel" value="45" />
+  </appSettings>
+  <connectionStrings>
+    <!--开发机链接-->
+    <add name="DEVDBConn" connectionString="Data Source=172.20.1.34;Connection Timeout=600; database=Acc; User ID=usrITSD_RW; Password=" providerName="System.Data.SqlClient" />
+    <add name="DEVConnectionString" connectionString="Data Source=172.20.1.70;Initial Catalog=ITSM;User ID=sa;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEVEflow" connectionString="Data Source=172.20.1.9;Initial Catalog=FlowData;User ID=sa;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEVORG" connectionString="Data Source=172.20.1.34;Initial Catalog=TPVORG;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEVTPVISIONORG" connectionString="Data Source=172.26.60.102;Initial Catalog=TPVORG;User ID=webdb.admin;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEVITSMConnectionString" connectionString="Data Source=172.20.1.70;Initial Catalog=ITSM;User ID=sa;Password=" providerName="System.Data.SqlClient" />
+    <!--测试机链接-->
+    <add name="QASDBConn" connectionString="Data Source=172.20.1.34;Connection Timeout=600; database=acc; User ID=usrITSD_RW; Password=" providerName="System.Data.SqlClient" />
+    <add name="QASConnectionString" connectionString="Data Source=172.20.1.70;Initial Catalog=ITSD;User ID=sa;Password=" providerName="System.Data.SqlClient" />
+    <add name="QASEflow" connectionString="Data Source=172.20.1.9;Initial Catalog=FlowData;User ID=sa;Password=" providerName="System.Data.SqlClient" />
+    <add name="QASORG" connectionString="Data Source=172.20.1.34;Initial Catalog=TPVORG;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <add name="QASTPVISIONORG" connectionString="Data Source=172.26.60.102;Initial Catalog=TPVORG;User ID=webdb.admin;Password=" providerName="System.Data.SqlClient" />
+    <add name="QASITSMConnectionString" connectionString="Data Source=172.20.1.70;Initial Catalog=ITSD;User ID=sa;Password=" providerName="System.Data.SqlClient" />
+    <!--正式机debug模式-->
+    <add name="DEBUGDBConn" connectionString="Data Source=172.20.1.34;Connection Timeout=600; database=acc; User ID=usrITSD_RW; Password=" providerName="System.Data.SqlClient" />
+    <add name="DEBUGConnectionString" connectionString="Data Source=172.20.1.34;Initial Catalog=ITSM;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEBUGEflow" connectionString="Data Source=172.20.1.10;Initial Catalog=FlowData;User ID=efdb.admin;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEBUGORG" connectionString="Data Source=172.20.1.34;Initial Catalog=TPVORG;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEBUGTPVISIONORG" connectionString="Data Source=172.26.60.102;Initial Catalog=TPVORG;User ID=webdb.admin;Password=" providerName="System.Data.SqlClient" />
+    <add name="DEBUGITSMConnectionString" connectionString="Data Source=172.20.1.34;Initial Catalog=ITSM;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <!--正式机链接-->
+    <add name="PRDDBConn" connectionString="Data Source=172.20.1.34;Connection Timeout=600; database=acc; User ID=usrITSD_RW; Password=" providerName="System.Data.SqlClient" />
+    <add name="PRDConnectionString" connectionString="Data Source=172.20.1.34;Initial Catalog=ITSM;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <add name="PRDEflow" connectionString="Data Source=172.20.1.10;Initial Catalog=FlowData;User ID=efdb.admin;Password=" providerName="System.Data.SqlClient" />
+    <add name="PRDORG" connectionString="Data Source=172.20.1.34;Initial Catalog=TPVORG;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+    <add name="PRDTPVISIONORG" connectionString="Data Source=172.26.60.102;Initial Catalog=TPVORG;User ID=webdb.admin;Password=" providerName="System.Data.SqlClient" />
+    <add name="PRDITSMConnectionString" connectionString="Data Source=172.20.1.34;Initial Catalog=ITSM;User ID=usrITSD_RW;Password=" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <!--
+    有关 web.config 更改的说明，请参见 http://go.microsoft.com/fwlink/?LinkId=235367。
+
+    可在 <httpRuntime> 标记上设置以下特性。
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+    <sessionState mode="InProc" timeout="20" />
+    <!--<sessionState mode="StateServer" stateConnectionString="tcpip=127.0.0.1:42424" cookieless="false" timeout="240" stateNetworkTimeout="14400"></sessionState>-->
+    <httpRuntime maxRequestLength="100960" executionTimeout="1200" useFullyQualifiedRedirectUrl="false" requestValidationMode="2.0" />
+    <!-- 
+            设置 compilation debug="true" 可将调试符号插入
+            已编译的页面中。但由于这会 
+            影响性能，因此只在开发过程中将此值 
+            设置为 true。
+        -->
+    <compilation targetFramework="4.5" debug="true">
+      <assemblies>
+        <add assembly="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Data.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+        <add assembly="Infragistics4.Web.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7DD5C3163F2CD0CB" />
+        <add assembly="Infragistics4.WebUI.Documents.Excel.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7DD5C3163F2CD0CB" />
+        <add assembly="Infragistics4.WebUI.Documents.Core.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7DD5C3163F2CD0CB" />
+      </assemblies>
+    </compilation>
+    <!--
+            通过 <authentication> 节可以配置 ASP.NET 用来 
+            识别进入用户的
+            安全身份验证模式。 
+        -->
+    <authentication mode="Forms" />
+    <customErrors mode="Off" defaultRedirect="Error.aspx" />
+    <!--
+            如果在执行请求的过程中出现未处理的错误，
+            则通过 <customErrors> 节可以配置相应的处理步骤。具体说来，
+            开发人员通过该节可以配置
+            要显示的 html 错误页
+            以代替错误堆栈跟踪。
+
+        <customErrors mode="RemoteOnly" defaultRedirect="GenericErrorPage.htm">
+            <error statusCode="403" redirect="NoAccess.htm" />
+            <error statusCode="404" redirect="FileNotFound.htm" />
+        </customErrors>
+        -->
+    <pages validateRequest="false" controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID">
+      <controls>
+        <!--<add assembly="Ext.Net" namespace="Ext.Net" tagPrefix="ext"/>-->
+        <!--Infragistics Controls-->
+        <add tagPrefix="ig" namespace="Infragistics.Web.UI" assembly="Infragistics4.Web.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+        <add tagPrefix="ig" namespace="Infragistics.Web.UI.LayoutControls" assembly="Infragistics4.Web.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+        <add tagPrefix="ig" namespace="Infragistics.Web.UI.GridControls" assembly="Infragistics4.Web.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+        <add tagPrefix="ig" namespace="Infragistics.Web.UI.NavigationControls" assembly="Infragistics4.Web.v18.1, Version=18.1.20181.23, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+      </controls>
+    </pages>
+    <httpHandlers>
+      <!--<add path="*/ext.axd" verb="*" type="Ext.Net.ResourceHandler" validate="false"/>-->
+    </httpHandlers>
+    <httpModules>
+      <!--<add name="DirectRequestModule" type="Ext.Net.DirectRequestModule, Ext.Net"/>-->
+    </httpModules>
+  </system.web>
+  <!-- 
+        在 Internet 信息服务 7.0 下运行 ASP.NET AJAX 需要 system.webServer
+        节。对早期版本的 IIS 来说则不需要此节。
+    -->
+  <system.webServer>
+    <modules>
+      <!--<add name="DirectRequestModule" preCondition="managedHandler" type="Ext.Net.DirectRequestModule, Ext.Net"/>-->
+    </modules>
+    <handlers>
+      <!--<add name="DirectRequestHandler" verb="*" path="*/ext.axd" preCondition="integratedMode" type="Ext.Net.ResourceHandler"/>-->
+    </handlers>
+    <defaultDocument>
+      <files>
+        <add value="Login.aspx" />
+      </files>
+    </defaultDocument>
+    <staticContent>
+      <mimeMap fileExtension=".msg" mimeType="application/octet-stream" />
+      <mimeMap fileExtension=".7z" mimeType="application/octet-stream" />
+    </staticContent>
+  </system.webServer>
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="UDSWebServiceSoap" closeTimeout="00:01:00" openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00" allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard" maxBufferPoolSize="524288" maxBufferSize="65536" maxReceivedMessageSize="65536" textEncoding="utf-8" transferMode="Buffered" useDefaultWebProxy="true" messageEncoding="Text">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384" maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None" realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+        <binding name="ServiceSoap" />
+      </basicHttpBinding>
+      <customBinding>
+        <binding name="UDSWebServiceSoap12">
+          <textMessageEncoding maxReadPoolSize="64" maxWritePoolSize="16" messageVersion="Soap12" writeEncoding="utf-8">
+            <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384" maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          </textMessageEncoding>
+          <httpTransport manualAddressing="false" maxBufferPoolSize="524288" maxReceivedMessageSize="65536" allowCookies="false" authenticationScheme="Anonymous" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard" keepAliveEnabled="true" maxBufferSize="65536" proxyAuthenticationScheme="Anonymous" realm="" transferMode="Buffered" unsafeConnectionNtlmAuthentication="false" useDefaultWebProxy="true" />
+        </binding>
+        <binding name="ServiceSoap12">
+          <textMessageEncoding messageVersion="Soap12" />
+          <httpTransport />
+        </binding>
+      </customBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://whoa.tpvaoc.com/UDSWebService.asmx" binding="basicHttpBinding" bindingConfiguration="UDSWebServiceSoap" contract="WHWebService.UDSWebServiceSoap" name="UDSWebServiceSoap" />
+      <endpoint address="http://ws.tpvaoc.com/accwsbin/Service.asmx" binding="basicHttpBinding" bindingConfiguration="ServiceSoap" contract="HRWS.ServiceSoap" name="ServiceSoap" />
+      <!--<endpoint address="http://ws.tpvaoc.com/accwsbin/Service.asmx"
+        binding="customBinding" bindingConfiguration="ServiceSoap12"
+        contract="HRWS.ServiceSoap" name="ServiceSoap12" />-->
+    </client>
+  </system.serviceModel>
+</configuration>

@@ -187,7 +187,7 @@ export class ExampleDataSource extends DataSource<Issue> {
     return merge(...displayDataChanges).pipe(map( () => {
         // Filter data
         this.filteredData = this._exampleDatabase.data.slice().filter((issue: Issue) => {
-          const searchStr = (issue.id + issue.internetLink + issue.internetGroup + issue.description).toLowerCase();
+         const searchStr = (issue.id + issue.internetLink + issue.internetGroup + issue.description).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
 

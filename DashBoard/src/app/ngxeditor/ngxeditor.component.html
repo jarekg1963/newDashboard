@@ -1,2 +1,66 @@
-<p>ngxeditor works!</p>
-<app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<div class="jumbotron text-center">
+  <h4>Notepad for making notes</h4>
+  <p>Have fun!!</p>
+</div>
+<div class="container">
+  <form class="form" [formGroup]="formdata" (ngSubmit)="on_submit(formdata.value)" novalidate method="post">
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="form-group"
+          [ngClass]="{'error': formdata.controls.faq_question.errors && formdata.controls.faq_question.touched}">
+          <label for="NewQuestion">Type Anything</label>
+          <div class="input-group controls">
+
+            <app-ngx-editor required formControlName="faq_question" id="NewQuestion" placeholder="New Question"
+              height="100px" minHeight="100px" [placeholder]="'Enter text here...'" [spellcheck]="true"
+              [(ngModel)]="htmlContent"></app-ngx-editor>
+
+            <div *ngIf="formdata.controls.faq_question.errors && formdata.controls.faq_question.touched"
+              class="help-block clearfix mt-2">
+              <ul role="alert">
+                <li class="alert-danger p-2">This is required min5 max 400</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-12 m-b-12 m-t-12">
+
+        <button type="submit" class="btn btn-success btn-lg waves-effect waves-light m-r-10"
+          [disabled]="!formdata.valid">Submit</button>
+
+
+      </div>
+    </div>
+  </form>
+
+<hr>
+
+<div class="row" style="margin-bottom:15px;">
+  <div class="col-md-3">
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple>
+    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+  </div>
+  <div class="col-md-4">
+    <span class="upload" *ngIf="progress > 0">
+      {{progress}}%
+    </span>
+    <span class="upload" *ngIf="message">
+      {{message}}
+    </span>
+  </div>
+</div>
+<hr>
+
+
+<!-- <ngx-doc-viewer [url]="//a/a.doc" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer> -->
+
+<a href="//a/a.html"> link htm </a>
+</div>

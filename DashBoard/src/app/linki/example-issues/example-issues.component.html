@@ -26,12 +26,12 @@
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+      <mat-cell *matCellDef="let row" ><a routerLink="/linkidocuments/{{ row.id }}">{{ row.id }}</a></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="internetLink">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Url</mat-header-cell>
-    <mat-cell *matCellDef="let row"  > <a href="{{row.internetLink}}" >{{ row.internetLink}}</a>  </mat-cell>
+    <mat-cell *matCellDef="let row"  ><a href="{{row.internetLink}}" >{{ row.internetLink}}</a>  </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">

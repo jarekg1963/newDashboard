@@ -1,11 +1,14 @@
+using System.IO;
 using Advantage.API.Model;
 using Advantage.API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
@@ -31,7 +34,7 @@ namespace Advantage.API
 
             services.AddDbContext<DerogationContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("Mssql")));
-        
+
             services.AddCors(opt =>
         {
             opt.AddPolicy("CorsPolicy",
@@ -84,6 +87,22 @@ namespace Advantage.API
             app.UseHttpsRedirection();
             app.UseRouting();
             seed.SeedData(20, 1000);
+
+
+            //  linie dotyczace zapisywania plikow 
+
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions());
+            // {
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+            //     RequestPath = new PathString("/Resources")
+            // });
+
+      
+    
+
+            // koniec linii 
+
             // Autoryzacje zabawa
             app.UseAuthentication();
             app.UseAuthorization();
